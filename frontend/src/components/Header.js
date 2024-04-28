@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Icon, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiOutlineMenuAlt3, HiShoppingBag, HiUser } from "react-icons/hi";
 
-import HeaderMenu from "./HeadermenuItem";
+import HeaderMenu from "./HeaderMenu";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -30,7 +30,7 @@ const Header = () => {
           size="md"
           letterSpacing="wide"
         >
-          RST Store
+          BlogoSphere
         </Heading>
       </Link>
 
