@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Icon, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiOutlineMenuAlt3, HiShoppingBag, HiUser } from "react-icons/hi";
 
-import HeaderMenuItem from "./HeaderMenuItem";
+import HeaderMenu from "./HeadermenuItem";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -48,8 +48,8 @@ const Header = () => {
         width={{ base: "full", md: "auto" }}
         mt={{ base: 4, md: 0 }}
       >
-        <HeaderMenuItem icon={HiShoppingBag} label="Cart" url="/cart" />
-        <HeaderMenuItem icon={HiUser} label="Login" url="/login" />
+        <HeaderMenu icon={HiShoppingBag} label="Cart" url="/cart" />
+        <HeaderMenu icon={HiUser} label="Login" url="/login" />
       </Box>
     </Flex>
   );

@@ -1,9 +1,14 @@
-const App = () => {
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
+function App() {
   return (
-    <div >
-      <h1 className="text-7xl text-center text-blue-500 text" >hello</h1>
+    <div>
+      <Header />
+      <div style={{ height: "100px" }}></div>
+      <Footer />
     </div>
   );
-};
+}
 
 export default App;
