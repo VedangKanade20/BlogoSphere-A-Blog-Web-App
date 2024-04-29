@@ -5,6 +5,7 @@ const blogs = [
     image: "/images/gh.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
+    author: "John Doe",
   },
   {
     _id: "2",
@@ -12,6 +13,7 @@ const blogs = [
     image: "/images/ai.jpg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
+    author: "Jane Doe",
   },
   {
     _id: "3",
@@ -19,6 +21,7 @@ const blogs = [
     image: "/images/fullstack.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
+    author: "Peter Doe",
   },
   {
     _id: "4",
@@ -26,6 +29,7 @@ const blogs = [
     image: "/images/hackathons.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
+    author: "Jim Doe",
   },
   {
     _id: "5",
@@ -33,6 +37,7 @@ const blogs = [
     image: "/images/dsa.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
+    author: "Sean Doe",
   },
   {
     _id: "6",
@@ -40,6 +45,7 @@ const blogs = [
     image: "/images/ml.jpg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
+    author: "Liam Doe",
   },
 ];
 

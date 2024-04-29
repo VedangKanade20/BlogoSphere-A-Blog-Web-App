@@ -23,7 +23,7 @@ const Header = () => {
       left="0"
     >
       {/* Title/Logo */}
-      <Link as={RouterLink} to="/">
+      <Link as={RouterLink} to='/'>
         <Heading
           as="h1"
           color="whiteAlpha.800"

@@ -39,7 +39,7 @@ import { Button, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
 import { Link as RouterLink, useParams } from "react-router-dom";
 import blogs from "../blogs";
 
-const ProductScreen = () => {
+const BlogScreen = () => {
   const { id } = useParams();
   const blog = blogs.find((b) => b._id === id);
 
@@ -57,32 +57,32 @@ const ProductScreen = () => {
         Go Back
       </Button>
 
-      {/* Product Grid */}
+      {/* Blog Grid */}
       <Grid
         templateColumns={{ sm: "1fr", md: "3fr 1fr" }}
         gap={{ base: "4", md: "8" }}
         maxWidth="1200px"
         width="100%"
       >
-        {/* Product Image */}
+        {/* Blog Image */}
         <Image
           src={blog.image}
-          alt={blog.name}
+          alt={blog.title}
           borderRadius="md"
           maxH="400px"
           w="full"
         />
 
-        {/* Product Details */}
+        {/* Blog Details */}
         <Flex direction="column" alignItems="flex-start">
-          {/* Product Name */}
+          {/* Blog Name */}
           <Heading as="h2" fontSize="4xl" mb="4">
-            {blog.name}
+            {blog.title}
           </Heading>
 
-          {/* Product Description */}
+          {/* Blog Description */}
           <Text fontSize="lg" mb="6">
-            {blog.description}
+            {blog.content}
           </Text>
 
           {/* Additional Information */}
@@ -98,4 +98,4 @@ const ProductScreen = () => {
   );
 };
 
-export default ProductScreen;
+export default BlogScreen;

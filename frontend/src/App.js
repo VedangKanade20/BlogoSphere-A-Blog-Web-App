@@ -1,6 +1,7 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
+import BlogScreen from "./screens/BlogScreen";
 
 import { Flex } from "@chakra-ui/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,6 +20,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/blogs/:id" element={<BlogScreen />} />
         </Routes>
       </Flex>
       <Footer />
