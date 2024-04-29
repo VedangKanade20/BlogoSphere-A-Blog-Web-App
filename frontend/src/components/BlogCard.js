@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Image, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import blogs from "../blogs";
+import blogs from "../../../backend/data/blogs";
 
 const BlogCard = ({ blog }) => {
   return (

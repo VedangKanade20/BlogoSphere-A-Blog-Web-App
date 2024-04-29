@@ -1,7 +1,7 @@
 import { Grid, Heading } from "@chakra-ui/react";
 
 import BlogCard from "../components/BlogCard";
-import blogs from "../blogs";
+import blogs from "../../../backend/data/blogs";
 
 const HomeScreen = () => {
   return (

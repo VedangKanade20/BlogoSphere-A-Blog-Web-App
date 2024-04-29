@@ -37,7 +37,7 @@
 
 import { Button, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
 import { Link as RouterLink, useParams } from "react-router-dom";
-import blogs from "../blogs";
+import blogs from "../../../backend/data/blogs";
 
 const BlogScreen = () => {
   const { id } = useParams();
