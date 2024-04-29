@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Icon, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiOutlineMenuAlt3, HiShoppingBag, HiUser } from "react-icons/hi";
+import { Link as RouterLink } from "react-router-dom";
 
 import HeaderMenu from "./HeaderMenu";
 
@@ -22,7 +23,7 @@ const Header = () => {
       left="0"
     >
       {/* Title/Logo */}
-      <Link href="/">
+      <Link as={RouterLink} to="/">
         <Heading
           as="h1"
           color="whiteAlpha.800"

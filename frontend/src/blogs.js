@@ -2,42 +2,42 @@ const blogs = [
   {
     _id: "1",
     title: "Github Blog",
-    image: "../public/images/gh.jpeg",
+    image: "/images/gh.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
   },
   {
     _id: "2",
     title: "AI Blog",
-    image: "../public/images/ai.jpg",
+    image: "/images/ai.jpg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
   },
   {
     _id: "3",
     title: "Full Stack Developer Blog",
-    image: "../public/images/fullstack.jpeg",
+    image: "/images/fullstack.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
   },
   {
     _id: "4",
     title: "Hackathon Blog",
-    image: "../public/images/hackathons.jpeg",
+    image: "/images/hackathons.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
   },
   {
     _id: "5",
     title: "DSA Blog",
-    image: "../public/images/dsa.jpeg",
+    image: "/images/dsa.jpeg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
   },
   {
     _id: "6",
     title: "Machine Learning Blog",
-    image: "../public/images/female_img_1.jpg",
+    image: "/images/ml.jpg",
     content:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
   },
