@@ -1,12 +1,11 @@
 import { Box, Flex, Heading, Image, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import blogs from "../../../backend/data/blogs";
 
 const BlogCard = ({ blog }) => {
   return (
     <Link
       as={RouterLink}
-      to={`/blogs/${blog._id}`}
+      to={`/blog/${blog._id}`}
       _hover={{ textDecor: "none" }}
     >
       <Box borderRadius="lg" bgColor="white" _hover={{ shadow: "md" }}>
