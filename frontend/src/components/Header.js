@@ -1,9 +1,10 @@
 import { Box, Flex, Heading, Icon, Link } from "@chakra-ui/react";
 import { useState } from "react";
-import { HiOutlineMenuAlt3, HiShoppingBag, HiUser } from "react-icons/hi";
+import { BiLogInCircle } from "react-icons/bi";
+import { FaRegistered } from "react-icons/fa6";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link as RouterLink } from "react-router-dom";
-
-import HeaderMenu from "./HeaderMenu";
+import HeaderMenuItem from "./HeaderMenuItem";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -11,46 +12,54 @@ const Header = () => {
   return (
     <Flex
       as="header"
-      alignItems="center"
+      align="center"
       justifyContent="space-between"
       wrap="wrap"
       py="6"
       px="6"
-      bgColor="gray.800"
+      bgColor="whitesmoke"
       w="100%"
       pos="fixed"
       top="0"
       left="0"
+      zIndex="9999"
+      shadow="lg"
     >
-      {/* Title/Logo */}
-      <Link as={RouterLink} to='/'>
+      <Link as={RouterLink} to="/" style={{ textDecoration: "none" }}>
         <Heading
           as="h1"
-          color="whiteAlpha.800"
+          color="#1c1c50"
           fontWeight="bold"
-          size="md"
+          fontSize="25px"
           letterSpacing="wide"
+          fontFamily="Arial Black"
         >
-          BlogoSphere
+          Blogosphere
         </Heading>
       </Link>
 
-      {/* Hamburger Menu */}
       <Box
         display={{ base: "block", md: "none" }}
         onClick={() => setShow(!show)}
       >
-        <Icon as={HiOutlineMenuAlt3} color="white" w="6" h="6" />
+        <Icon as={HiOutlineMenuAlt3} color="#444" w="6" h="6" />
       </Box>
 
-      {/* Menu */}
       <Box
         display={{ base: show ? "block" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
-        mt={{ base: 4, md: 0 }}
+        mt={{ base: "3", md: "0" }}
       >
-        <HeaderMenu icon={HiShoppingBag} label="Cart" url="/cart" />
-        <HeaderMenu icon={HiUser} label="Login" url="/login" />
+        <HeaderMenuItem
+          url="/login"
+          label="Login"
+          icon={<Icon as={BiLogInCircle} mr="1" w="4" h="4" />}
+        />
+        <HeaderMenuItem
+          url="/register"
+          label="Register"
+          icon={<Icon as={FaRegistered} mr="1" w="4" h="4" />}
+        />
       </Box>
     </Flex>
   );

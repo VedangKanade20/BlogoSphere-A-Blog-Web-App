@@ -40,7 +40,7 @@ const SingleBlogScreen = () => {
         {/* BLOG Image */}
         <Image
           src={blog.image}
-          alt={blog.name}
+          alt={blog.title}
           borderRadius="md"
           maxH="400px"
           w="full"
@@ -48,9 +48,9 @@ const SingleBlogScreen = () => {
 
         {/* BLOG Details */}
         <Flex direction="column" alignItems="flex-start">
-          {/* BLOG Name */}
+          {/* BLOG title */}
           <Heading as="h2" fontSize="4xl" mb="4">
-            {blog.name}
+            {blog.title}
           </Heading>
 
           {/* BLOG Description */}
