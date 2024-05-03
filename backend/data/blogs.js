@@ -1,6 +1,5 @@
 const blogs = [
   {
-    _id: "1",
     title: "GitHub",
     image: "/images/github.png",
     content:
@@ -8,7 +7,6 @@ const blogs = [
     author: "John Doe",
   },
   {
-    _id: "2",
     title: "Artifical Intelligence",
     image: "/images/ai.jpg",
     content:
@@ -16,7 +14,6 @@ const blogs = [
     author: "Jane Doe",
   },
   {
-    _id: "3",
     title: "Cyber Security",
     image: "/images/fullstack.jpeg",
     content:
@@ -24,7 +21,6 @@ const blogs = [
     author: "James Franklin",
   },
   {
-    _id: "4",
     title: "Devops Engineering",
     image: "/images/dsa.jpeg",
     content:
@@ -32,7 +28,6 @@ const blogs = [
     author: "Olive Robinson",
   },
   {
-    _id: "5",
     title: "Software Engineering",
     image: "/images/hackathons.jpeg",
     content:
@@ -40,7 +35,6 @@ const blogs = [
     author: "Raquel Rebello",
   },
   {
-    _id: "6",
     title: "Machine Learning",
     image: "/images/ML.jpg",
     content:
