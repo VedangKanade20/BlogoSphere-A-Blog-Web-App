@@ -1,8 +1,14 @@
 import colors from "colors";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
 import Blog from "./models/blogModel.js";
 import User from "./models/userModel.js";
 import blogs from "./data/blogs.js";
 import users from "./data/users.js";
+
+dotenv.config();
+
+connectDB();
 
 const importData = async () => {
   try {
