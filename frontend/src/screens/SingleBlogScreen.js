@@ -55,7 +55,7 @@ const SingleBlogScreen = () => {
 
           {/* BLOG Description */}
           <Text fontSize="lg" mb="6">
-            {blog.description}
+            {blog.content}
           </Text>
 
           {/* Additional Information */}

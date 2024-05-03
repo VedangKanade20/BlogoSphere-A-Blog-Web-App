@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import blogs from "./data/blogs.js";
 import connectDB from "./config/db.js";
+import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
@@ -15,14 +16,8 @@ app.get("/", (req, res) => {
   res.send("API is running");
 });
 
-app.get("/api/blogs", (req, res) => {
-  res.json(blogs);
-});
-
-app.get("/api/blogs/:id", (req, res) => {
-  const blog = blogs.find((b) => b._id === req.params.id);
-  res.json(blog);
-});
+//Routes
+app.use("/api/blogs", blogRoutes);
 
 // Middleware
 app.use(notFound);
