@@ -32,6 +32,7 @@ export default BlogCard;
 import { Box, Flex, Heading, IconButton, Image, Link } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 import { Link as RouterLink } from "react-router-dom";
+import Rating from "./Rating";
 
 const BlogCard = ({ blog }) => {
   // // Pass onDelete function as a prop
@@ -51,7 +52,7 @@ const BlogCard = ({ blog }) => {
     >
       <Image
         src={blog.image}
-        alt={blog.name}
+        alt={blog.title}
         w="full"
         h="222px"
         objectFit="fit"
@@ -61,7 +62,7 @@ const BlogCard = ({ blog }) => {
       <Flex py="5" px="4" direction="column" justifyContent="space-between">
         <Flex alignItems="center" justifyContent="space-between">
           <Heading as="h4" fontSize="lg" mb="3">
-            {blog.name}
+            {blog.title}
           </Heading>
           {/* Delete Button */}
           <IconButton
