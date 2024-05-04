@@ -1,19 +1,21 @@
-import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Button, Flex, Grid, Heading, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Link as RouterLink } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
+import { listBlogs } from "../actions/blogActions";
 
 const HomeScreen = () => {
-  const [blogs, setBlogs] = useState([]);
+  const dispatch = useDispatch();
+
+  const blogsList = useSelector((state) => state.blogList);
+  const { loading, error, blogs } = blogsList;
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      const { data } = await axios.get("/api/blogs");
-      setBlogs(data);
-    };
-    fetchBlogs();
-  }, []);
+    dispatch(listBlogs());
+  }, [dispatch]);
 
   const handleCreatePost = () => {
     // Add your logic here for creating a new blog post
@@ -40,21 +42,26 @@ const HomeScreen = () => {
           Create Post
         </Button>
       </Flex>
-
-      <Grid
-        templateColumns={{
-          sm: "1fr",
-          md: "1fr 1fr",
-          lg: "1fr 1fr 1fr",
-          xl: "1fr 1fr 1fr ",
-        }}
-        gap="10"
-        mt="7"
-      >
-        {blogs.map((blog) => (
-          <BlogCard key={blog._id} blog={blog} />
-        ))}
-      </Grid>
+      {loading ? (
+        <p>Loading....</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <Grid
+          templateColumns={{
+            sm: "1fr",
+            md: "1fr 1fr",
+            lg: "1fr 1fr 1fr",
+            xl: "1fr 1fr 1fr ",
+          }}
+          gap="10"
+          mt="7"
+        >
+          {blogs.map((blog) => (
+            <BlogCard key={blog._id} blog={blog} />
+          ))}
+        </Grid>
+      )}
     </>
   );
 };
