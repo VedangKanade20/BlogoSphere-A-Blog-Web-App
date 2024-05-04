@@ -1,5 +1,5 @@
-import { Button, Flex, Grid, Heading, useDisclosure } from "@chakra-ui/react";
-import axios from "axios";
+import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
