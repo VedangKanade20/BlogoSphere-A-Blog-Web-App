@@ -1,6 +1,6 @@
 import { Button, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+import { useEffect } from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "../components/Rating";
