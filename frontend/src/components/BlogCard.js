@@ -1,7 +1,6 @@
 import { Box, Flex, Heading, IconButton, Image, Link } from "@chakra-ui/react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Link as RouterLink } from "react-router-dom";
-import Rating from "./Rating";
 
 const BlogCard = ({ blog }) => {
   // // Pass onDelete function as a prop
@@ -23,7 +22,7 @@ const BlogCard = ({ blog }) => {
         src={blog.image}
         alt={blog.title}
         w="full"
-        h="222px"
+        h="200px"
         objectFit="fit"
         borderTopLeftRadius="lg"
         borderTopRightRadius="lg"
@@ -39,6 +38,8 @@ const BlogCard = ({ blog }) => {
             {/* Edit Button */}
             <IconButton
               aria-label="Edit"
+              as={RouterLink}
+              to="/editBlog"
               icon={<MdEdit />}
               // onClick={handleDelete}
               colorScheme="gray"
