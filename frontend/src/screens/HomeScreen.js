@@ -1,11 +1,10 @@
 import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link as RouterLink } from "react-router-dom";
-import BlogCard from "../components/BlogCard";
 import { listBlogs } from "../actions/blogActions";
+import BlogCard from "../components/BlogCard";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
@@ -24,6 +23,10 @@ const HomeScreen = () => {
     console.log("Create post clicked");
   };
 
+  const handleLatesPost = () => {
+    console.log("Latest Blog clicked");
+  };
+
   return (
     <>
       <Flex justify="space-between" align="center">
@@ -35,7 +38,9 @@ const HomeScreen = () => {
           as={RouterLink}
           size="sm"
           to="/postBlog"
-          colorScheme="blue"
+          bg="#E6F6FF"
+          color="#1c1c50"
+          border="2px solid #eee"
           fontFamily="Arial"
           fontWeight="bold"
           p={{ base: "10px", md: "22px" }}
@@ -44,11 +49,33 @@ const HomeScreen = () => {
           Create Post
         </Button>
       </Flex>
+
+      <Flex>
+        <Button
+          as={RouterLink}
+          size="sm"
+          to="/latestBlogs"
+          bg="#E6F6FF"
+          color="#1c1c50"
+          border="2px solid #eee"
+          fontFamily="Arial"
+          fontWeight="bold"
+          p={{ base: "10px", md: "22px" }}
+          onClick={handleLatesPost}
+        >
+          Latest Blogs
+        </Button>
+      </Flex>
+
       {loading ? (
+        // <p>Loading.....</p>
         <Loader />
-      ) : error ? (
+      ) : // <Loading />
+      error ? (
+        // <p>{error}</p>
         <Message type="error">{error}</Message>
       ) : (
+        // <ErrorMessage />
         <Grid
           templateColumns={{
             sm: "1fr",
@@ -57,7 +84,7 @@ const HomeScreen = () => {
             xl: "1fr 1fr 1fr ",
           }}
           gap="10"
-          mt="7"
+          mt="10"
         >
           {blogs.map((blog) => (
             <BlogCard key={blog._id} blog={blog} />
