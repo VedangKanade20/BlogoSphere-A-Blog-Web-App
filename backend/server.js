@@ -5,12 +5,14 @@ import express from "express";
 import connectDB from "./config/db.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+app.use(express.json()); // Accepting the json data
 
 app.get("/", (req, res) => {
   res.send("API is running");
@@ -18,6 +20,7 @@ app.get("/", (req, res) => {
 
 //Routes
 app.use("/api/blogs", blogRoutes);
+app.use("/api/users", userRoutes);
 
 // Middleware
 app.use(notFound);
