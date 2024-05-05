@@ -1,36 +1,5 @@
-/* import { Box, Flex, Heading, Image, Link } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
-
-const BlogCard = ({ blog }) => {
-  return (
-    <Link
-      as={RouterLink}
-      to={`/blog/${blog._id}`}
-      _hover={{ textDecor: "none" }}
-    >
-      <Box borderRadius="lg" bgColor="white" _hover={{ shadow: "md" }}>
-        <Image
-          src={blog.image}
-          alt={blog.title}
-          w="full"
-          h="500px"
-          objectFit="cover"
-        />
-        <Flex py="5" px="4" direction="column" justifyContent="space-between">
-          <Heading as="h4" fontSize="lg" mb="3">
-            {blog.title}
-          </Heading>
-        </Flex>
-      </Box>
-    </Link>
-  );
-};
-
-export default BlogCard;
- */
-
 import { Box, Flex, Heading, IconButton, Image, Link } from "@chakra-ui/react";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import { Link as RouterLink } from "react-router-dom";
 import Rating from "./Rating";
 
@@ -60,18 +29,30 @@ const BlogCard = ({ blog }) => {
         borderTopRightRadius="lg"
       />
       <Flex py="5" px="4" direction="column" justifyContent="space-between">
-        <Flex alignItems="center" justifyContent="space-between">
-          <Heading as="h4" fontSize="lg" mb="3">
-            {blog.title}
-          </Heading>
-          {/* Delete Button */}
-          <IconButton
-            aria-label="Delete"
-            icon={<MdDelete />}
-            // onClick={handleDelete}
-            colorScheme="gray"
-          />
+        <Flex direction="row " justifyContent="space-between">
+          <Flex alignItems="center" justifyContent="space-between">
+            <Heading as="h4" fontSize="lg" mb="3">
+              {blog.title}
+            </Heading>
+          </Flex>
+          <Flex alignItems="center" justifyContent="space-between" gap="7">
+            {/* Edit Button */}
+            <IconButton
+              aria-label="Edit"
+              icon={<MdEdit />}
+              // onClick={handleDelete}
+              colorScheme="gray"
+            />
+            {/* Delete Button */}
+            <IconButton
+              aria-label="Delete"
+              icon={<MdDelete />}
+              // onClick={handleDelete}
+              colorScheme="gray"
+            />
+          </Flex>
         </Flex>
+
         <Link
           as={RouterLink}
           to={`/blog/${blog._id}`}

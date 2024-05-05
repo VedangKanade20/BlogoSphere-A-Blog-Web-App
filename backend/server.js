@@ -1,7 +1,7 @@
 import colors from "colors";
 import dotenv from "dotenv";
 import express from "express";
-import blogs from "./data/blogs.js";
+
 import connectDB from "./config/db.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
