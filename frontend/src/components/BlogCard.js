@@ -11,12 +11,13 @@ const BlogCard = ({ blog }) => {
 
   return (
     <Box
-      borderRadius="lg"
+      borderRadius="30"
       _hover={{
         shadow: "lg",
         transform: "translateY(-10px)",
         transition: "all 0.3s ease-in-out",
       }}
+      bgColor="aliceblue"
     >
       <Image
         src={blog.image}

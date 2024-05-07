@@ -7,9 +7,9 @@ import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 
-dotenv.config();
+dotenv.config(); // For Env
 
-connectDB();
+connectDB(); // connection to Mongodb
 
 const app = express();
 app.use(express.json()); // Accepting the json data
@@ -26,6 +26,7 @@ app.use("/api/users", userRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
+//Whole ENV Setup
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
