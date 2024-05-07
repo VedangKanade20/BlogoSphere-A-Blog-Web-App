@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LatestBlogsScreen from "./screens/LatestBlogsScreen";
 import SingleBlogScreen from "./screens/SingleBlogScreen";
 import TrendingBlogsScreen from "./screens/TrendingBlogsScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/editBlog" element={<EditBlogScreen />} />
           <Route path="/trendingBlogs" element={<TrendingBlogsScreen />} />
           <Route path="/latestBlogs" element={<LatestBlogsScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
         </Routes>
       </Flex>
       <Footer />
