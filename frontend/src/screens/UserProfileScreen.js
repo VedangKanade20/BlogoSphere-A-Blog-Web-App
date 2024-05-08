@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
 import Message from "../components/Message";
 
@@ -34,6 +34,9 @@ const UserProfileScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
+
   useEffect(() => {
     if (!userInfo) {
       navigate("/login");
@@ -45,7 +48,7 @@ const UserProfileScreen = () => {
         setEmail(user.email);
       }
     }
-  }, [dispatch, navigate, user, userInfo]);
+  }, [dispatch, navigate, user, userInfo, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -53,7 +56,8 @@ const UserProfileScreen = () => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
-      // DISPATCH UPDATE USER PROFILE
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
+      // window.location.reload();
     }
   };
 
