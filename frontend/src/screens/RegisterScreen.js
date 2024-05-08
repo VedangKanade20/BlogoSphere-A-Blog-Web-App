@@ -16,6 +16,8 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import CSS for styling
 
 import { register } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
@@ -45,9 +47,8 @@ const RegisterScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      toast.error("Passwords do not match");
     } else {
       dispatch(register(name, email, password));
     }
@@ -128,6 +129,7 @@ const RegisterScreen = () => {
           </Text>
         </Flex>
       </FormContainer>
+      <ToastContainer />
     </Flex>
   );
 };

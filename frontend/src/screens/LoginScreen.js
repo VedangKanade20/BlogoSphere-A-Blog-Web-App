@@ -9,16 +9,17 @@ import {
   Spacer,
   Text,
 } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Link as RouterLink,
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import CSS for styling
 import { login } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
-import Message from "../components/Message";
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
@@ -44,14 +45,18 @@ const LoginScreen = () => {
     dispatch(login(email, password));
   };
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error); // Display error message
+    }
+  }, [error]);
+
   return (
-    <Flex w="full" alignItems="center" justifyContent="center" py="5">
+    <Flex w="full" alignItems="center" justifyContent="center" py="5" mt="5">
       <FormContainer>
         <Heading as="h1" mb="8" fontSize="3xl">
           Login
         </Heading>
-
-        {error && <Message type="error">{error}</Message>}
 
         <form onSubmit={submitHandler}>
           <FormControl id="email">
@@ -59,7 +64,7 @@ const LoginScreen = () => {
             <Input
               id="email"
               type="email"
-              placeholder="username@domain.com"
+              placeholder="Enter your email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -92,6 +97,7 @@ const LoginScreen = () => {
           </Text>
         </Flex>
       </FormContainer>
+      <ToastContainer /> {/* Render the ToastContainer component */}
     </Flex>
   );
 };
