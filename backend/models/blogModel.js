@@ -20,7 +20,6 @@ const reviewSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
-
     blog: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Blog",
@@ -49,10 +48,7 @@ const blogSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    author: {
-      type: String,
-      required: true,
-    },
+
     rating: {
       type: Number,
       required: true,
