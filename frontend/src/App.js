@@ -26,7 +26,7 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<HomeScreen />} />
-          <Route path="/blog/:id" element={<SingleBlogScreen />} />
+          <Route path="/blogs/:id" element={<SingleBlogScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/userProfile" element={<UserProfileScreen />} />

@@ -57,7 +57,7 @@ const BlogCard = ({ blog }) => {
 
         <Link
           as={RouterLink}
-          to={`/blog/${blog._id}`}
+          to={`/blogs/${blog._id}`}
           fontFamily="Verdana"
           _hover={{
             textDecor: "none",
