@@ -57,4 +57,31 @@ const createBlog = asyncHandler(async (req, res) => {
   }
 });
 
-export { getBlogById, getBlogs, createBlog };
+/**
+ * @desc		Update a product
+ * @route		PUT/api/blogs/:id
+ * @access	private/admin
+ */
+const updateBlog = asyncHandler(async (req, res) => {
+  const { title, content, image } = req.body;
+  try {
+    const blog = await Blog.findById(req.params.id);
+
+    if (blog) {
+      blog.title = title;
+      blog.content = content;
+      blog.image = image;
+
+      const updatedBlog = await blog.save();
+      res.json(updatedBlog);
+    } else {
+      res.status(404).json({ message: "Blog not found" });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
+
+export { getBlogById, getBlogs, createBlog, updateBlog };
