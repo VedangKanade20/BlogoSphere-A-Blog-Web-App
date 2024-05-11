@@ -64,24 +64,37 @@ const createBlog = asyncHandler(async (req, res) => {
  */
 const updateBlog = asyncHandler(async (req, res) => {
   const { title, content, image } = req.body;
-  try {
-    const blog = await Blog.findById(req.params.id);
 
-    if (blog) {
-      blog.title = title;
-      blog.content = content;
-      blog.image = image;
+  const blog = await Blog.findById(req.params.id);
 
-      const updatedBlog = await blog.save();
-      res.json(updatedBlog);
-    } else {
-      res.status(404).json({ message: "Blog not found" });
-    }
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ message: "Server Error" });
+  if (blog) {
+    blog.title = title;
+    blog.content = content;
+    blog.image = image;
+
+    const updatedBlog = await blog.save();
+    res.json(updatedBlog);
+  } else {
+    res.status(404);
+    throw new Error("Blog not Found");
   }
 });
 
+/**
+ * @desc		Delete a blog
+ * @route		DELETE /api/blogs/:id
+ * @access	private
+ */
+const deleteBlog = asyncHandler(async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
 
-export { getBlogById, getBlogs, createBlog, updateBlog };
+  if (blog) {
+    await blog.deleteOne();
+    res.json({ message: "Blog deleted" });
+  } else {
+    res.status(404);
+    throw new Error("Blog not Found");
+  }
+});
+
+export { getBlogById, getBlogs, createBlog, updateBlog, deleteBlog };
