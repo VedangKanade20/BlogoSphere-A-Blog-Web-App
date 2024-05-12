@@ -1,3 +1,5 @@
+// export default SingleBlogScreen;
+
 // import { Button, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
 
 // import { useEffect } from "react";
@@ -25,9 +27,12 @@
 //       <Button
 //         as={RouterLink}
 //         to="/"
-//         colorScheme="blue"
 //         size="sm"
-//         mb="4"
+//         colorScheme="teal"
+//         border="1px solid #fff"
+//         fontFamily="Arial"
+//         fontWeight="bold"
+//         p={{ base: "10px", md: "22px" }}
 //         alignSelf="flex-start"
 //       >
 //         Go Back
@@ -41,7 +46,7 @@
 //         <Message type="error">{error}</Message>
 //       ) : (
 //         <Grid
-//           templateColumns={{ sm: "1fr", md: "4fr 3fr" }}
+//           templateColumns={{ sm: "1fr", md: "1fr" }}
 //           gap={{ base: "4", md: "8" }}
 //           maxWidth="1200px"
 //           width="100%"
@@ -51,26 +56,32 @@
 //             src={blog.image}
 //             alt={blog.title}
 //             borderRadius="md"
-//             maxH="600px"
+//             maxH="400px"
 //             w="full"
+//             mt="5"
 //           />
 
 //           {/* BLOG Details */}
 //           <Flex direction="column" alignItems="flex-start">
 //             {/* BLOG title */}
-//             <Heading as="h2" fontSize="4xl" mb="4">
+//             <Heading as="h2" fontSize="4xl" mb="4" fontFamily="Verdana">
 //               {blog.title}
 //             </Heading>
 
 //             {/* BLOG Description */}
-//             <Text fontSize="lg" mb="6">
+//             <Text fontSize="lg" mb="6" fontFamily="Verdana" textAlign="justify">
 //               {blog.content}
 //             </Text>
 
 //             {/* Additional Information */}
-//             <Flex alignItems="center" justifyContent="space-between" gap="20">
-//               <Text fontSize="2xl" fontWeight="bold" color="blue.600">
-//                 {blog.author}
+//             <Flex alignItems="center" justifyContent="space-between" gap="5">
+//               <Text
+//                 fontSize="3xl"
+//                 fontWeight="bold"
+//                 color="blue.600"
+//                 fontFamily="Verdana"
+//               >
+//                 {/* {blog.author} */} Ratings:
 //               </Text>
 //               <Rating value={blog.rating} color="yellow.500" />
 //             </Flex>
@@ -133,17 +144,8 @@ const SingleBlogScreen = () => {
           gap={{ base: "4", md: "8" }}
           maxWidth="1200px"
           width="100%"
+          mt="8"
         >
-          {/* BLOG Image */}
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            borderRadius="md"
-            maxH="400px"
-            w="full"
-            mt="5"
-          />
-
           {/* BLOG Details */}
           <Flex direction="column" alignItems="flex-start">
             {/* BLOG title */}
@@ -151,18 +153,35 @@ const SingleBlogScreen = () => {
               {blog.title}
             </Heading>
 
+            {/* BLOG Image */}
+
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              borderRadius="10px"
+              h={{ base: "300px", md: "400px" }}
+              w="full"
+              objectFit="fill"
+            />
+
             {/* BLOG Description */}
-            <Text fontSize="lg" mb="6" fontFamily="Verdana" textAlign="justify">
+            <Text
+              fontSize="lg"
+              mb="6"
+              fontFamily="Verdana"
+              textAlign="justify"
+              mt="3"
+            >
               {blog.content}
             </Text>
 
             {/* Additional Information */}
             <Flex alignItems="center" justifyContent="space-between" gap="5">
               <Text
-                fontSize="3xl"
+                fontSize="2xl"
                 fontWeight="bold"
                 color="blue.600"
-                fontFamily="Verdana"
+                fontFamily="Georgia"
               >
                 {/* {blog.author} */} Ratings:
               </Text>

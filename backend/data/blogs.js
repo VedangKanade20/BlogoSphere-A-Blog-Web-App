@@ -32,7 +32,7 @@ const blogs = [
     rating: 3.8,
   },
   {
-    title: "Software Engineering",
+    title: "Software Engineering is becomimg very popular",
     image: "/images/sofenggif.gif",
     content:
       "Software engineering is a discipline that involves applying engineering principles to the design, development, testing, and maintenance of software systems. It encompasses a range of activities, including requirements analysis, software design, coding, testing, deployment, and maintenance. Software engineers use various methodologies, tools, and programming languages to create high-quality software that meets user needs efficiently and reliably. The field of software engineering also emphasizes principles such as modularity, abstraction, reusability, and scalability to manage the complexity of software systems effectively.",
@@ -40,8 +40,8 @@ const blogs = [
     rating: 4.1,
   },
   {
-    title: "Machine Learning",
-    image: "/images/mlgif.gif",
+    title: "Machine Learning is growing rapidly",
+    image: "https://s18670.pcdn.co/wp-content/uploads/robot.gif",
     content:
       "Machine learning is a subset of artificial intelligence (AI) that focuses on the development of algorithms that enable computers to learn from and make predictions or decisions based on data. Instead of explicitly programming rules, machine learning algorithms learn patterns and relationships from data to make predictions or decisions without being explicitly programmed to do so. It involves the use of mathematical and statistical techniques to enable computers to improve their performance on a task as they are exposed to more data over time. Machine learning has various applications, including image recognition, natural language processing, recommendation systems, and predictive analytics.",
     author: "Peter Maria",

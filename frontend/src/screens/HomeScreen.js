@@ -1,8 +1,9 @@
 import { Button, Flex, Grid, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Link as RouterLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { listBlogs } from "../actions/blogActions";
 import BlogCard from "../components/BlogCard";
 import Loader from "../components/Loader";
@@ -16,7 +17,13 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(listBlogs());
+    // Show welcome message when component mounts
+    // toast.success("Welcome to Blogosphere!");
   }, [dispatch]);
+
+  useEffect(() => {
+    toast.success("Welcome to Blogosphere!");
+  }, []);
 
   const handleCreatePost = () => {
     // Add your logic here for creating a new blog post
@@ -29,6 +36,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      <ToastContainer />
       <Flex justify="space-between" align="center">
         <Heading as="h2" mb="10" fontSize="25px" mt="4">
           All Blogs
@@ -38,12 +46,11 @@ const HomeScreen = () => {
           as={RouterLink}
           size="sm"
           to="/postBlog"
-          bg="#E6F6FF"
-          color="#1c1c50"
-          border="2px solid #eee"
+          colorScheme="teal"
+          border="1px solid #fff"
           fontFamily="Arial"
           fontWeight="bold"
-          p={{ base: "10px", md: "22px" }}
+          p={{ base: "18px", md: "22px" }}
           onClick={handleCreatePost}
         >
           Create Post
@@ -55,12 +62,11 @@ const HomeScreen = () => {
           as={RouterLink}
           size="sm"
           to="/latestBlogs"
-          bg="#E6F6FF"
-          color="#1c1c50"
-          border="2px solid #eee"
+          colorScheme="teal"
+          border="1px solid #fff"
           fontFamily="Arial"
           fontWeight="bold"
-          p={{ base: "10px", md: "22px" }}
+          p={{ base: "18px", md: "22px" }}
           onClick={handleLatesPost}
         >
           Latest Blogs
@@ -83,7 +89,7 @@ const HomeScreen = () => {
             lg: "1fr 1fr 1fr",
             xl: "1fr 1fr 1fr ",
           }}
-          gap="10"
+          gap="12"
           mt="10"
         >
           {blogs.map((blog) => (
