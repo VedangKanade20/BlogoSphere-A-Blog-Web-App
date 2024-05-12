@@ -38,7 +38,7 @@ const HomeScreen = () => {
     <>
       <ToastContainer />
       <Flex justify="space-between" align="center">
-        <Heading as="h2" mb="10" fontSize="25px" mt="4" fontFamily=" Teko">
+        <Heading as="h2" mb="10" fontSize="25px" mt="4" fontFamily="Arial ">
           All Blogs
         </Heading>
 
