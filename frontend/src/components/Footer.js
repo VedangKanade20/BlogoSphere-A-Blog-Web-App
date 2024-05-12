@@ -34,7 +34,10 @@ const Footer = () => {
           ❤
         </span>{" "}
         by{" "}
-        <Link color="blue.500" href="https://yourwebsite.com">
+        <Link
+          color="blue.500"
+          href="https://my-portfolio-lemon-sigma-58.vercel.app/"
+        >
           Vedang Kanade
         </Link>
       </Text>
