@@ -14,7 +14,10 @@ const reviewSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-
+    author: {
+      type: String,
+      required: true,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -49,6 +52,10 @@ const blogSchema = mongoose.Schema(
       required: true,
     },
 
+    author: {
+      type: String,
+      required: true,
+    },
     rating: {
       type: Number,
       required: true,

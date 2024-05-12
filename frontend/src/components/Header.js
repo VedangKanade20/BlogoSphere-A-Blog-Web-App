@@ -53,10 +53,10 @@ const Header = () => {
         <Heading
           as="h1"
           color="#fff"
-          fontWeight="bold"
+          /* fontWeight="bold" */
           fontSize="30px"
           letterSpacing="wide"
-          fontFamily=" Arial"
+          fontFamily=" Arial Black"
         >
           Blogosphere
         </Heading>

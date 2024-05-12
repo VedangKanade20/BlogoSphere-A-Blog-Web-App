@@ -38,7 +38,7 @@ const HomeScreen = () => {
     <>
       <ToastContainer />
       <Flex justify="space-between" align="center">
-        <Heading as="h2" mb="10" fontSize="25px" mt="4">
+        <Heading as="h2" mb="10" fontSize="25px" mt="4" fontFamily=" Teko">
           All Blogs
         </Heading>
 
@@ -48,7 +48,7 @@ const HomeScreen = () => {
           to="/postBlog"
           colorScheme="teal"
           border="1px solid #fff"
-          fontFamily="Arial"
+          fontFamily=" Teko"
           fontWeight="bold"
           p={{ base: "18px", md: "22px" }}
           onClick={handleCreatePost}
@@ -64,7 +64,7 @@ const HomeScreen = () => {
           to="/latestBlogs"
           colorScheme="teal"
           border="1px solid #fff"
-          fontFamily="Arial"
+          fontFamily=" Teko"
           fontWeight="bold"
           p={{ base: "18px", md: "22px" }}
           onClick={handleLatesPost}
