@@ -15,6 +15,9 @@ const HomeScreen = () => {
   const blogsList = useSelector((state) => state.blogList);
   const { loading, error, blogs } = blogsList;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   useEffect(() => {
     dispatch(listBlogs());
     // Show welcome message when component mounts
@@ -24,6 +27,12 @@ const HomeScreen = () => {
   useEffect(() => {
     toast.success("Welcome to Blogosphere!");
   }, []);
+
+  useEffect(() => {
+    if (userInfo) {
+      toast.success(`${userInfo.name} Logged In!! `);
+    }
+  }, [userInfo]);
 
   const handleCreatePost = () => {
     // Add your logic here for creating a new blog post

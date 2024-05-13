@@ -28,7 +28,7 @@ const RegisterScreen = () => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  let redirect = searchParams.get("redirect") || "/";
+  let redirect = searchParams.get("redirect") || "/register";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,6 +51,7 @@ const RegisterScreen = () => {
       toast.error("Passwords do not match");
     } else {
       dispatch(register(name, email, password));
+      toast.success(`${userInfo.name} registered successfully!`);
     }
   };
 
