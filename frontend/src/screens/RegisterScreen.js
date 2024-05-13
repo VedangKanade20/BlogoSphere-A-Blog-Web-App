@@ -28,7 +28,7 @@ const RegisterScreen = () => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  let redirect = searchParams.get("redirect") || "/register";
+  let redirect = searchParams.get("redirect") || "/";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
