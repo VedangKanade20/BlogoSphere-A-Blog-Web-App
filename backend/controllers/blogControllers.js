@@ -130,7 +130,7 @@ const createBlogReview = asyncHandler(async (req, res) => {
   };
 
   blog.reviews.push(review);
-  blog.numReviews = blog.reviews.length;
+  /* blog.numReviews = blog.reviews.length; */
 
   /* const totalRating = blog.reviews.reduce(
     (acc, currVal) => acc + currVal.rating,
