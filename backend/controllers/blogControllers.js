@@ -102,46 +102,16 @@ const deleteBlog = asyncHandler(async (req, res) => {
  * @route		POST /api/products/:id/reviews
  * @access	private
  */
-
 const createBlogReview = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body;
+  const { rating, comment} = req.body;
 
-  const blog = await Blog.findById(req.params.id);
+  const blog =  await Blog.findById(req.params.id);
 
-  if (!blog) {
-    res.status(404);
-    throw new Error("Blog not found");
+  if(blog) {
+    const alreadyRe
   }
+})
 
-  const alreadyReviewed = blog.reviews.find(
-    (review) => review.user.toString() === req.user._id.toString()
-  );
-
-  if (alreadyReviewed) {
-    res.status(400);
-    throw new Error("Blog already reviewed");
-  }
-
-  const review = {
-    title: req.user.title,
-    rating: +rating,
-    comment,
-    user: req.user._id,
-  };
-
-  blog.reviews.push(review);
-  /* blog.numReviews = blog.reviews.length; */
-
-  /* const totalRating = blog.reviews.reduce(
-    (acc, currVal) => acc + currVal.rating,
-    0
-  );
-  blog.rating = totalRating / blog.reviews.length; */
-
-  await blog.save();
-
-  res.status(201).json({ message: "Review added successfully" });
-});
 
 export {
   getBlogById,
