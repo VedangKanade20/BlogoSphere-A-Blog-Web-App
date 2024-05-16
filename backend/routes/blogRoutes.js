@@ -5,7 +5,7 @@ import {
   createBlog,
   updateBlog,
   deleteBlog,
-  createBlogReview,
+  addBlogReview,
 } from "../controllers/blogControllers.js";
 import { protect } from "../middlewares/authMiddleware.js";
 
@@ -17,6 +17,6 @@ router
   .get(getBlogById)
   .put(protect, updateBlog)
   .delete(protect, deleteBlog);
-router.route("/:id/reviews").post(protect, createBlogReview);
+router.route("/:id/reviews").post(protect, addBlogReview); //for adding comment
 
 export default router;
