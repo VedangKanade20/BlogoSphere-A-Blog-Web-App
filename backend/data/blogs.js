@@ -4,7 +4,6 @@ const blogs = [
     image: "/images/githubgif.gif",
     content:
       "GitHub is a platform for hosting and collaborating on code projects. It uses the Git version control system to track changes to files, making it easy for multiple people to work on the same project simultaneously. GitHub provides tools for managing projects, reviewing code, and facilitating collaboration among developers. It's widely used in the software development community for open source and private projects alike.",
-
     ratings: 1.6,
   },
   {
@@ -12,7 +11,6 @@ const blogs = [
     image: "/images/aigif.gif",
     content:
       "Artificial Intelligence (AI) is a branch of computer science focused on creating systems that can perform tasks that typically require human intelligence. These tasks include things like understanding natural language, recognizing patterns, solving problems, and learning from experience. AI techniques range from traditional methods like rule-based systems to more advanced approaches such as machine learning and deep learning, where algorithms can automatically improve their performance through exposure to data.",
-
     ratings: 2.4,
   },
   {

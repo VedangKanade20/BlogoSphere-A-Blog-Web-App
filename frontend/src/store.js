@@ -1,7 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { thunk } from "redux-thunk";
-import { blogDetailsReducer, blogListReducer } from "./reducers/blogReducer";
+import {
+  blogDetailsReducer,
+  blogListReducer,
+  blogReviewCreateReducer,
+} from "./reducers/blogReducer";
 import {
   userDetailsReducer,
   userLoginReducer,
@@ -16,6 +20,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
+  blogReviewCreate: blogReviewCreateReducer,
 });
 
 // saved user info in local storage

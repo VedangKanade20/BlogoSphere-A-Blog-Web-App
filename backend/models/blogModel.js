@@ -57,12 +57,14 @@
 
 // export default Blog;
 
-
-
 import mongoose from "mongoose";
 
 const reviewSchema = mongoose.Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     comment: {
       user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -88,6 +90,7 @@ const blogSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
+
     title: {
       type: String,
       required: true,

@@ -1,23 +1,57 @@
-import { Button, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Grid,
+  Heading,
+  Image,
+  Select,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink, useParams } from "react-router-dom";
-import { listBlogDetails } from "../actions/blogActions";
+import { createBlogReview, listBlogDetails } from "../actions/blogActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
+import { BLOG_REVIEW_CREATE_RESET } from "../constants/blogConstants";
 
 const SingleBlogScreen = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  const [rating, setRating] = useState(1);
+  const [comment, setComment] = useState("");
+
   const blogDetails = useSelector((state) => state.blogDetail);
   const { loading, error, blog } = blogDetails;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const blogReviewCreate = useSelector((state) => state.blogReviewCreate);
+  const { success: successBlogReview, error: errorBlogReview } =
+    blogReviewCreate;
+
   useEffect(() => {
+    if (successBlogReview) {
+      alert("Review Submitted");
+      setRating(1);
+      setComment("");
+      dispatch({ type: BLOG_REVIEW_CREATE_RESET });
+    }
     dispatch(listBlogDetails(id));
-  }, [id, dispatch]);
+  }, [id, dispatch, successBlogReview]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(createBlogReview(id, { rating, comment }));
+  };
 
   return (
     <Flex direction="column" alignItems="center" mt="6">
@@ -43,61 +77,137 @@ const SingleBlogScreen = () => {
       ) : error ? (
         <Message type="error">{error}</Message>
       ) : (
-        <Grid
-          templateColumns={{ sm: "1fr", md: "1fr" }}
-          gap={{ base: "4", md: "8" }}
-          maxWidth="1200px"
-          width="100%"
-          mt="8"
-        >
-          {/* BLOG Details */}
-          <Flex direction="column" alignItems="flex-start">
-            {/* BLOG title */}
-            <Heading as="h2" fontSize="4xl" mb="4" fontFamily="Verdana">
-              {blog.title}
-            </Heading>
+        <>
+          <Grid
+            templateColumns={{ sm: "1fr", md: "1fr" }}
+            gap={{ base: "4", md: "8" }}
+            maxWidth="1200px"
+            width="100%"
+            mt="8"
+          >
+            {/* BLOG Details */}
+            <Flex direction="column" alignItems="flex-start">
+              {/* BLOG title */}
+              <Heading as="h2" fontSize="4xl" mb="4" fontFamily="Verdana">
+                {blog.title}
+              </Heading>
 
-            {/* BLOG Image */}
+              {/* BLOG Image */}
 
-            <Image
-              src={blog.image}
-              alt={blog.title}
-              borderRadius="10px"
-              h={{ base: "300px", md: "400px" }}
-              w="full"
-              objectFit="fill"
-            />
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                borderRadius="10px"
+                h={{ base: "300px", md: "400px" }}
+                w="full"
+                objectFit="fill"
+              />
 
-            {/* BLOG Description */}
-            <Text
-              fontSize="lg"
-              mb="6"
-              fontFamily="Verdana"
-              textAlign="justify"
-              mt="3"
-            >
-              {blog.content}
-            </Text>
-
-            {/* Additional Information */}
-            <Flex
-              alignItems="center"
-              justifyContent="space-between"
-              direction="row"
-              gap="8"
-            >
+              {/* BLOG Description */}
               <Text
+                fontSize="lg"
+                mb="6"
+                fontFamily="Verdana"
+                textAlign="justify"
+                mt="3"
+              >
+                {blog.content}
+              </Text>
+
+              {/* Additional Information */}
+              <Flex
+                alignItems="center"
+                justifyContent="space-between"
+                direction="row"
+                gap="8"
+              >
+                {/* <Text
                 fontSize="20px"
                 fontWeight="bold"
                 color="#000"
                 fontFamily="Verdana, Arial Black"
               >
                 {`Author: ${blog.author}`}
-              </Text>
-              <Rating value={blog.rating} color="yellow.500" size="lg" />
+              </Text> */}
+                <Rating value={blog.ratings} color="yellow.500" size="lg" />
+              </Flex>
             </Flex>
-          </Flex>
-        </Grid>
+          </Grid>
+          <Box
+            p="10"
+            bgColor="white"
+            rounded="md"
+            mt="10"
+            borderColor="gray.300"
+            w="full"
+          >
+            <Heading as="h3" size="lg" mb="6">
+              Write a review
+            </Heading>
+
+            {blog.reviews.length === 0 && <Message>No Reviews</Message>}
+
+            {blog.reviews.length !== 0 && (
+              <Box p="4" bgColor="white.900" rounded="md" mb="1" mt="5">
+                {blog.reviews.map((review) => (
+                  <Flex
+                    direction="column"
+                    key={review._id}
+                    mb="5"
+                    border="dashed"
+                    w="full"
+                  >
+                    <Flex justifyContent="space-between">
+                      <Text fontSize="lg">
+                        <strong>{review.name}</strong>
+                      </Text>
+                      <Rating value={review.rating} />
+                    </Flex>
+                    <Text mt="2">{review.comment}</Text>
+                  </Flex>
+                ))}
+              </Box>
+            )}
+
+            {errorBlogReview && (
+              <Message type="error">{errorBlogReview}</Message>
+            )}
+
+            {userInfo ? (
+              <form onSubmit={submitHandler}>
+                <FormControl id="rating" mb="3">
+                  <FormLabel>Rating</FormLabel>
+                  <Select
+                    placeholder="Select Option"
+                    value={rating}
+                    onChange={(e) => setRating(e.target.value)}
+                  >
+                    <option>Select...</option>
+                    <option value="1">1 - Poor</option>
+                    <option value="2">2 - Okay</option>
+                    <option value="3">3 - Good</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="5">5 - Excellent</option>
+                  </Select>
+                </FormControl>
+
+                <FormControl id="comment" mb="3">
+                  <FormLabel>Comment</FormLabel>
+                  <Textarea
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  ></Textarea>
+                </FormControl>
+
+                <Button colorScheme="teal" type="submit">
+                  Post Review
+                </Button>
+              </form>
+            ) : (
+              <Message>Please login to write a review</Message>
+            )}
+          </Box>
+        </>
       )}
     </Flex>
   );

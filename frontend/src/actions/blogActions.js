@@ -5,6 +5,9 @@ import {
   BLOG_DETAILS_SUCCESS,
   BLOG_LIST_FAIL,
   BLOG_LIST_SUCCESS,
+  BLOG_REVIEW_CREATE_FAIL,
+  BLOG_REVIEW_CREATE_REQUEST,
+  BLOG_REVIEW_CREATE_SUCCESS,
   BlOG_LIST_REQUEST,
 } from "../constants/blogConstants";
 
@@ -43,3 +46,33 @@ export const listBlogDetails = (id) => async (dispatch) => {
     });
   }
 };
+
+export const createBlogReview =
+  (blogId, review) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: BLOG_REVIEW_CREATE_REQUEST });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+          "Content-Type": "application/json",
+        },
+      };
+
+      await axios.post(`/api/blogs/${blogId}/reviews`, review, config);
+
+      dispatch({ type: BLOG_REVIEW_CREATE_SUCCESS });
+    } catch (err) {
+      dispatch({
+        type: BLOG_REVIEW_CREATE_FAIL,
+        payload:
+          err.response && err.response.data.message
+            ? err.response.data.message
+            : err.message,
+      });
+    }
+  };

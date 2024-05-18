@@ -5,6 +5,10 @@ import {
   BLOG_DETAILS_FAIL,
   BLOG_DETAILS_REQUEST,
   BLOG_DETAILS_SUCCESS,
+  BLOG_REVIEW_CREATE_REQUEST,
+  BLOG_REVIEW_CREATE_SUCCESS,
+  BLOG_REVIEW_CREATE_FAIL,
+  BLOG_REVIEW_CREATE_RESET,
 } from "../constants/blogConstants";
 
 export const blogListReducer = (state = { blogs: [] }, action) => {
@@ -31,6 +35,21 @@ export const blogDetailsReducer = (
       return { loading: false, blog: action.payload };
     case BLOG_DETAILS_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const blogReviewCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BLOG_REVIEW_CREATE_REQUEST:
+      return { loading: true };
+    case BLOG_REVIEW_CREATE_SUCCESS:
+      return { loading: false, success: true };
+    case BLOG_REVIEW_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case BLOG_REVIEW_CREATE_RESET:
+      return {};
     default:
       return state;
   }
