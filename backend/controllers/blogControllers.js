@@ -120,7 +120,7 @@ const addBlogReview = asyncHandler(async (req, res) => {
     // Add the review to the blog
     blog.reviews.push({ user: userId, comment, rating });
     // Recalculate the average rating
-    blog.averageRating = (
+    blog.ratings = (
       blog.reviews.reduce((total, review) => total + review.rating, 0) /
       blog.reviews.length
     ).toFixed(1); // Round to 1 decimal place
