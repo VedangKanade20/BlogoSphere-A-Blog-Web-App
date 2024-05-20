@@ -27,6 +27,7 @@ const SingleBlogScreen = () => {
 
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
+  const [name, setName] = useState("");
 
   const blogDetails = useSelector((state) => state.blogDetail);
   const { loading, error, blog } = blogDetails;
@@ -43,6 +44,7 @@ const SingleBlogScreen = () => {
       alert("Review Submitted");
       setRating(1);
       setComment("");
+      setName("");
       dispatch({ type: BLOG_REVIEW_CREATE_RESET });
     }
     dispatch(listBlogDetails(id));
@@ -50,7 +52,7 @@ const SingleBlogScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(createBlogReview(id, { rating, comment }));
+    dispatch(createBlogReview(id, { rating, comment, name }));
   };
 
   return (
@@ -150,13 +152,7 @@ const SingleBlogScreen = () => {
             {blog.reviews.length !== 0 && (
               <Box p="4" bgColor="white.900" rounded="md" mb="1" mt="5">
                 {blog.reviews.map((review) => (
-                  <Flex
-                    direction="column"
-                    key={review._id}
-                    mb="5"
-                    border="dashed"
-                    w="full"
-                  >
+                  <Flex direction="column" key={review._id} mb="5" w="full">
                     <Flex justifyContent="space-between">
                       <Text fontSize="lg">
                         <strong>{review.name}</strong>
@@ -192,10 +188,20 @@ const SingleBlogScreen = () => {
                 </FormControl>
 
                 <FormControl id="comment" mb="3">
-                  <FormLabel>Comment</FormLabel>
+                  <FormLabel>Comment:</FormLabel>
                   <Textarea
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
+                  ></Textarea>
+                </FormControl>
+
+                <FormControl id="name" mb="3">
+                  <FormLabel>
+                    Your name: (To verify this is not a Robot 🤖)
+                  </FormLabel>
+                  <Textarea
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   ></Textarea>
                 </FormControl>
 
