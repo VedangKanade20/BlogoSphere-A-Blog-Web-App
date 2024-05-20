@@ -6,6 +6,11 @@ const userSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      blog: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Blog",
+        // required: true,
+      },
     },
     email: {
       type: String,
@@ -21,11 +26,6 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-    // blog: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "Blog",
-    //   // required: true,
-    // },
   },
   { timestamps: true }
 );
