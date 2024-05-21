@@ -104,59 +104,6 @@ const deleteBlog = asyncHandler(async (req, res) => {
  * @route   POST /api/blogs/:id/addReview
  * @access  private
  */
-
-// const addBlogReview = asyncHandler(async (req, res) => {
-//   const { comment, rating } = req.body;
-//   const blogId = req.params.id;
-//   const userId = req.user._id;
-//   const userName = req.user.name; // Assuming you have user information in the request
-
-//   if (!comment || !rating) {
-//     return res.status(400).json({ message: "Comment and rating are required" });
-//   }
-
-//   try {
-//     const blog = await Blog.findById(blogId);
-
-//     if (!blog) {
-//       return res.status(404).json({ message: "Blog not found" });
-//     }
-
-//     // Check if the user has already reviewed the blog
-//     const alreadyReviewed = blog.reviews.find(
-//       (review) => review.user.toString() === userId.toString()
-//     );
-
-//     if (alreadyReviewed) {
-//       return res
-//         .status(400)
-//         .json({ message: "Blog already reviewed by this user" });
-//     }
-
-//     // Add the review to the blog
-//     const review = {
-//       userName,
-//       comment,
-//       rating: Number(rating),
-//       user: userId,
-//     };
-//     blog.reviews.push(review);
-
-//     // Recalculate the average rating
-//     blog.ratings = (
-//       blog.reviews.reduce((total, review) => total + review.rating, 0) /
-//       blog.reviews.length
-//     ).toFixed(1); // Round to 1 decimal place
-
-//     // Save the updated blog
-//     await blog.save();
-//     res.status(201).json({ message: "Review added successfully", review });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: "Server Error" });
-//   }
-// });
-
 const addBlogReview = asyncHandler(async (req, res) => {
   const { name, comment, rating } = req.body;
   const blogId = req.params.id;
