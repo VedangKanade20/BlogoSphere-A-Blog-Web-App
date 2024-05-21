@@ -1,43 +1,103 @@
-// BlogPost.js
-
+import React, { useState } from "react";
 import {
   Box,
-  Button,
-  Divider,
-  HStack,
   Heading,
   Text,
+  Image,
+  Flex,
   VStack,
+  HStack,
+  Avatar,
+  Divider,
+  FormControl,
+  FormLabel,
+  Input,
+  Spacer,
+  Button,
 } from "@chakra-ui/react";
-import React from "react";
+import axios from "axios";
+import FormContainer from "../components/FormContainer";
 
 const BlogPostScreen = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post(`/api/uploads`, formData, config);
+      setImage(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
-    <Box p="6">
-      <VStack align="start" spacing="6">
-        <Heading size="xl">Title of the Blog Post</Heading>
-        <Text color="gray.500">Published on May 3, 2024</Text>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-          odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
-          quis sem at nibh elementum imperdiet.
-        </Text>
-        <Divider />
-        <Text>
-          Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-          enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-        </Text>
-        <Text>
-          Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
-          dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-          tellus.
-        </Text>
-      </VStack>
-      <HStack mt="6" spacing="4" justify="flex-end">
-        <Button colorScheme="teal">Edit</Button>
-        <Button colorScheme="red">Delete</Button>
-      </HStack>
-    </Box>
+    <>
+      <Flex w="full" alignItems="center" justifyContent="center" py="5" mt="6">
+        <FormContainer>
+          <Heading as="h1" mb="8" fontSize="3xl">
+            Create Blog
+          </Heading>
+
+          <form onSubmit={submitHandler}>
+            {/* TITLE */}
+            <FormControl id="title" isRequired>
+              <FormLabel>Name</FormLabel>
+              <Input
+                type="text"
+                placeholder="Enter Blog title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </FormControl>
+            <Spacer h="3" />
+
+            {/* CONTENT */}
+            <FormControl id="content" isRequired>
+              <FormLabel>Content</FormLabel>
+              <Input
+                type="text"
+                placeholder="Enter Blog content"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+            </FormControl>
+            <Spacer h="3" />
+
+            {/* IMAGE */}
+            <FormControl id="image" isRequired>
+              <FormLabel>Image</FormLabel>
+              <Input
+                type="text"
+                placeholder="Enter image url"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+              <Input type="file" onChange={uploadFileHandler} />
+            </FormControl>
+            <Divider />
+
+            <Button type="submit" colorScheme="teal" mt="4">
+              Update
+            </Button>
+          </form>
+        </FormContainer>
+      </Flex>
+    </>
   );
 };
 
