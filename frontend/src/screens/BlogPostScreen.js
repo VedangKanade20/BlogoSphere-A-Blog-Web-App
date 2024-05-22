@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Box,
   Heading,
-  Text,
-  Image,
   Flex,
-  VStack,
-  HStack,
-  Avatar,
   Divider,
   FormControl,
   FormLabel,
@@ -15,16 +9,66 @@ import {
   Spacer,
   Button,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import FormContainer from "../components/FormContainer";
+import { BLOG_CREATE_RESET } from "../constants/blogConstants";
+import { createBlog, listBlogs } from "../actions/blogActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const BlogPostScreen = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { id: blogId } = useParams();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const blogsList = useSelector((state) => state.blogList);
+  const { loading, error } = blogsList;
+
+  const blogCreate = useSelector((state) => state.blogCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    blog: createdBlog,
+  } = blogCreate;
+
+  useEffect(() => {
+    dispatch({ type: BLOG_CREATE_RESET });
+
+    if (!userInfo) {
+      navigate("/login");
+    }
+
+    if (successCreate) {
+      navigate("/");
+    } else {
+      dispatch(listBlogs());
+    }
+  }, [dispatch, navigate, userInfo, successCreate, createdBlog]);
+
+  const createBlogHandler = () => {
+    dispatch(createBlog());
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
+
+    dispatch(
+      createBlog({
+        title,
+        content,
+        image,
+      })
+    );
   };
 
   const uploadFileHandler = async (e) => {
@@ -47,12 +91,25 @@ const BlogPostScreen = () => {
   };
   return (
     <>
-      <Flex w="full" alignItems="center" justifyContent="center" py="5" mt="6">
-        <FormContainer>
-          <Heading as="h1" mb="8" fontSize="3xl">
-            Create Blog
-          </Heading>
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message type="error">{errorCreate}</Message>}
+      <Heading
+        as="h1"
+        mb="8"
+        fontSize="4xl"
+        py="4"
+        mt="15px"
+        textAlign="center"
+      >
+        Create Your Blog
+      </Heading>
 
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message type="error">{error}</Message>
+      ) : (
+        <Flex w="full" justifyContent="center" py="5">
           <form onSubmit={submitHandler}>
             {/* TITLE */}
             <FormControl id="title" isRequired>
@@ -91,12 +148,17 @@ const BlogPostScreen = () => {
             </FormControl>
             <Divider />
 
-            <Button type="submit" colorScheme="teal" mt="4">
-              Update
+            <Button
+              type="submit"
+              colorScheme="teal"
+              mt="4"
+              onClick={createBlogHandler}
+            >
+              Upload
             </Button>
           </form>
-        </FormContainer>
-      </Flex>
+        </Flex>
+      )}
     </>
   );
 };
