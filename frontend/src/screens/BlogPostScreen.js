@@ -26,6 +26,7 @@ const BlogPostScreen = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+  const [author, setAuthor] = useState("");
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -67,6 +68,8 @@ const BlogPostScreen = () => {
         title,
         content,
         image,
+        // user: req.user._id,
+        author,
       })
     );
   };

@@ -40,14 +40,39 @@ const getBlogById = asyncHandler(async (req, res) => {
  * @access	private/admin
  */
 
+// const createBlog = asyncHandler(async (req, res) => {
+//   const { title, content, image } = req.body;
+
+//   console.log("User:", req.user); // Add this line
+//   if (!req.user) {
+//     return res.status(401).json({ message: "User not authenticated" });
+//   }
+
+//   try {
+//     const newBlog = new Blog({
+//       title,
+//       content,
+//       image,
+//       author: req.user._id,
+//     });
+//     const createdBlog = await newBlog.save();
+//     res.status(201).json(createdBlog);
+//   } catch (err) {
+//     console.log(err.message);
+//     res.status(500).json({ message: "Server Error" });
+//   }
+// });
+
 const createBlog = asyncHandler(async (req, res) => {
   const { title, content, image } = req.body;
+
   try {
     const newBlog = new Blog({
       title,
       content,
       image,
       user: req.user._id,
+      author: req.user.name, // Assuming the user model has a name field
     });
     const createdBlog = await newBlog.save();
     res.status(201).json(createdBlog);

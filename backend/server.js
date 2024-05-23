@@ -1,11 +1,13 @@
 import colors from "colors";
 import dotenv from "dotenv";
 import express from "express";
+import path from "path";
 
 import connectDB from "./config/db.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config(); // For Env
 
@@ -21,6 +23,11 @@ app.get("/", (req, res) => {
 //Routes
 app.use("/api/blogs", blogRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/uploads", uploadRoutes);
+
+//Create static folder
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Middleware
 app.use(notFound);

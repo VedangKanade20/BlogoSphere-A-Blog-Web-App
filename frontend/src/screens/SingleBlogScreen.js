@@ -10,8 +10,9 @@ import {
   Select,
   Text,
   Textarea,
+  IconButton,
 } from "@chakra-ui/react";
-
+import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink, useParams } from "react-router-dom";
@@ -123,15 +124,24 @@ const SingleBlogScreen = () => {
                 direction="row"
                 gap="8"
               >
-                {/* <Text
-                fontSize="20px"
-                fontWeight="bold"
-                color="#000"
-                fontFamily="Verdana, Arial Black"
-              >
-                {`Author: ${blog.author}`}
-              </Text> */}
+                <Text
+                  fontSize="20px"
+                  fontWeight="bold"
+                  color="#000"
+                  fontFamily="Verdana, Arial Black"
+                >
+                  {`Author: ${blog.author}`}
+                </Text>
                 <Rating value={blog.ratings} color="yellow.500" size="lg" />
+                {/* Conditionally render Delete Button */}
+                {userInfo && userInfo._id === blog.author && (
+                  <IconButton
+                    aria-label="Delete"
+                    icon={<MdDelete />}
+                    colorScheme="gray"
+                    // onClick={handleDelete}
+                  />
+                )}
               </Flex>
             </Flex>
           </Grid>
