@@ -124,24 +124,24 @@ const SingleBlogScreen = () => {
                 direction="row"
                 gap="8"
               >
-                <Text
+                {/* <Text
                   fontSize="20px"
                   fontWeight="bold"
                   color="#000"
                   fontFamily="Verdana, Arial Black"
                 >
                   {`Author: ${blog.author}`}
-                </Text>
+                </Text> */}
                 <Rating value={blog.ratings} color="yellow.500" size="lg" />
                 {/* Conditionally render Delete Button */}
-                {userInfo && userInfo._id === blog.author && (
+                {/* {userInfo && userInfo._id === blog.author && (
                   <IconButton
                     aria-label="Delete"
                     icon={<MdDelete />}
                     colorScheme="gray"
                     // onClick={handleDelete}
                   />
-                )}
+                )} */}
               </Flex>
             </Flex>
           </Grid>

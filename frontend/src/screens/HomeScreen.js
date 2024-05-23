@@ -36,11 +36,11 @@ const HomeScreen = () => {
 
   const handleCreatePost = () => {
     // Add your logic here for creating a new blog post
-    console.log("Create post clicked");
+    //console.log("Create post clicked");
   };
 
   const handleLatesPost = () => {
-    console.log("Latest Blog clicked");
+    //console.log("Latest Blog clicked");
   };
 
   return (

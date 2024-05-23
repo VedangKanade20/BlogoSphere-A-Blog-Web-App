@@ -179,7 +179,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BLOG_CREATE_RESET } from "../constants/blogConstants";
+import {
+  BLOG_CREATE_RESET,
+  BLOG_CREATE_SUCCESS,
+} from "../constants/blogConstants";
 import { createBlog, listBlogs } from "../actions/blogActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -214,9 +217,12 @@ const BlogPostScreen = () => {
     }
 
     if (successCreate) {
+      dispatch({ type: BLOG_CREATE_SUCCESS });
+      console.log("Hello");
       navigate("/");
     } else {
       dispatch(listBlogs());
+      console.log("bye");
     }
   }, [dispatch, navigate, userInfo, successCreate, createdBlog]);
 
@@ -241,6 +247,7 @@ const BlogPostScreen = () => {
       setImage(data);
     } catch (err) {
       console.error(err);
+      console.log(err);
     }
   };
 

@@ -80,7 +80,7 @@ export const createBlogReview =
     }
   };
 
-export const createBlog = () => async (dispatch, getState) => {
+export const createBlog = (blog) => async (dispatch, getState) => {
   try {
     dispatch({ type: BLOG_CREATE_REQUEST });
 
@@ -95,7 +95,7 @@ export const createBlog = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/blogs`, {}, config);
+    const { data } = await axios.post(`/api/blogs`, blog, config);
 
     dispatch({ type: BLOG_CREATE_SUCCESS, payload: data });
   } catch (err) {
