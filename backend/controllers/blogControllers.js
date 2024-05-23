@@ -72,7 +72,6 @@ const createBlog = asyncHandler(async (req, res) => {
       content,
       image,
       user: req.user._id,
-      author: req.user.name, // Assuming the user model has a name field
     });
     const createdBlog = await newBlog.save();
     res.status(201).json(createdBlog);
