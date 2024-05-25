@@ -218,7 +218,6 @@ const BlogPostScreen = () => {
 
     if (successCreate) {
       dispatch({ type: BLOG_CREATE_SUCCESS });
-      console.log("Hello");
       navigate("/");
     } else {
       dispatch(listBlogs());

@@ -327,7 +327,7 @@ import Blog from "../models/blogModel.js";
  */
 
 const getBlogs = asyncHandler(async (req, res) => {
-  const blogs = await Blog.find({});
+  const blogs = await Blog.find({}).populate("author", "name email");
   res.json(blogs);
 });
 
@@ -338,12 +338,13 @@ const getBlogs = asyncHandler(async (req, res) => {
  */
 
 const getBlogById = asyncHandler(async (req, res) => {
-  // const { blogId } = req.params;
   try {
-    const blog = await Blog.findById(req.params.id);
+    const blog = await Blog.findById(req.params.id).populate(
+      "author",
+      "name email"
+    );
 
     if (blog) {
-      // const blog = await Blog.findById(blogId).populate("author", "name email");
       res.json(blog);
     } else {
       res.status(404).json({ message: "Blog not found" });
@@ -353,21 +354,6 @@ const getBlogById = asyncHandler(async (req, res) => {
     res.json(err);
   }
 });
-
-// const getAuthorById = asyncHandler(async (req, res) => {
-//   const { blogId } = req.params;
-
-//   try {
-//     const blog = await Blog.findById(blogId).populate('author', 'name email');
-//     if (!blog) {
-//       return res.status(404).json({ message: 'Blog not found' });
-//     }
-//     res.json(blog);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// })
 
 /**
  * @desc		Create a product
@@ -383,6 +369,7 @@ const createBlog = asyncHandler(async (req, res) => {
       content,
       image,
       user: req.user._id,
+      author: req.user._id,
     });
     const createdBlog = await newBlog.save();
     res.status(201).json(createdBlog);

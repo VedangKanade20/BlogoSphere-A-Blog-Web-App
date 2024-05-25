@@ -11,6 +11,7 @@ import {
   Text,
   Textarea,
   IconButton,
+  Divider,
 } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
@@ -25,6 +26,7 @@ import { BLOG_REVIEW_CREATE_RESET } from "../constants/blogConstants";
 const SingleBlogScreen = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const { author } = useParams();
 
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
@@ -117,23 +119,24 @@ const SingleBlogScreen = () => {
                 {blog.content}
               </Text>
 
+              <Divider />
               {/* Additional Information */}
               <Flex
                 alignItems="center"
                 justifyContent="space-between"
-                direction="row"
-                gap="8"
+                direction="column"
+                gap="3"
               >
-                {/* <Text
-                  fontSize="20px"
-                  fontWeight="bold"
-                  color="#000"
-                  fontFamily="Verdana, Arial Black"
-                >
-                  {`Author: ${blog.author}`}
-                </Text> */}
+                <Text fontSize="20px" color="#000" fontFamily="Verdana">
+                  Credits for the blog goes to
+                  <u> {blog.author && blog.author.name}</u>
+                </Text>
+                <Text fontSize="20px" color="#000" fontFamily="Verdana">
+                  The True Author:(
+                  {blog.author && blog.author.email}){" "}
+                </Text>
+
                 {/* <Rating value={blog.ratings} color="yellow.500" size="lg" /> */}
-                {userInfo.name}
                 {/* Conditionally render Delete Button */}
                 {/* {userInfo && userInfo._id === blog.author && (
                   <IconButton
