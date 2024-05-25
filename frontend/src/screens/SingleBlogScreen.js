@@ -132,7 +132,8 @@ const SingleBlogScreen = () => {
                 >
                   {`Author: ${blog.author}`}
                 </Text> */}
-                <Rating value={blog.ratings} color="yellow.500" size="lg" />
+                {/* <Rating value={blog.ratings} color="yellow.500" size="lg" /> */}
+                {userInfo.name}
                 {/* Conditionally render Delete Button */}
                 {/* {userInfo && userInfo._id === blog.author && (
                   <IconButton

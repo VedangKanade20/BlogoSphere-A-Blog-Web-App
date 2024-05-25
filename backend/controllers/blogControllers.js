@@ -338,10 +338,12 @@ const getBlogs = asyncHandler(async (req, res) => {
  */
 
 const getBlogById = asyncHandler(async (req, res) => {
+  // const { blogId } = req.params;
   try {
     const blog = await Blog.findById(req.params.id);
 
     if (blog) {
+      // const blog = await Blog.findById(blogId).populate("author", "name email");
       res.json(blog);
     } else {
       res.status(404).json({ message: "Blog not found" });
@@ -351,6 +353,21 @@ const getBlogById = asyncHandler(async (req, res) => {
     res.json(err);
   }
 });
+
+// const getAuthorById = asyncHandler(async (req, res) => {
+//   const { blogId } = req.params;
+
+//   try {
+//     const blog = await Blog.findById(blogId).populate('author', 'name email');
+//     if (!blog) {
+//       return res.status(404).json({ message: 'Blog not found' });
+//     }
+//     res.json(blog);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// })
 
 /**
  * @desc		Create a product
