@@ -138,14 +138,16 @@ const SingleBlogScreen = () => {
 
                 {/* <Rating value={blog.ratings} color="yellow.500" size="lg" /> */}
                 {/* Conditionally render Delete Button */}
-                {/* {userInfo && userInfo._id === blog.author && (
-                  <IconButton
-                    aria-label="Delete"
-                    icon={<MdDelete />}
-                    colorScheme="gray"
-                    // onClick={handleDelete}
-                  />
-                )} */}
+                {userInfo &&
+                  userInfo._id === blog.author &&
+                  blog.author.name(
+                    <IconButton
+                      aria-label="Delete"
+                      icon={<MdDelete />}
+                      colorScheme="gray"
+                      // onClick={handleDelete}
+                    />
+                  )}
               </Flex>
             </Flex>
           </Grid>
