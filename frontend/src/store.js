@@ -6,6 +6,7 @@ import {
   blogDetailsReducer,
   blogListReducer,
   blogReviewCreateReducer,
+  blogUpdateReducer,
 } from "./reducers/blogReducer";
 import {
   userDetailsReducer,
@@ -23,6 +24,7 @@ const reducer = combineReducers({
   userUpdateProfile: userUpdateProfileReducer,
   blogReviewCreate: blogReviewCreateReducer,
   blogCreate: blogCreateReducer,
+  blogUpdate: blogUpdateReducer,
 });
 
 // saved user info in local storage
