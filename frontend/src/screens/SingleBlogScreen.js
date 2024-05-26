@@ -15,6 +15,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink, useParams } from "react-router-dom";
@@ -129,7 +130,12 @@ const SingleBlogScreen = () => {
 
               <Divider />
               {/* Additional Information */}
-              <Flex justifyContent="space-between" direction="column" gap="5">
+              <Flex
+                justifyContent="space-between"
+                direction="column"
+                gap="5"
+                w="full"
+              >
                 <Text fontSize="17px" color="#000" fontFamily="Verdana">
                   Blog created by:
                   <u> {blog.author && blog.author.name}</u>
@@ -151,31 +157,44 @@ const SingleBlogScreen = () => {
                 /> */}
 
                 {/* Conditionally render Delete Button */}
-                <Flex>
+                <Flex
+                  justifyContent={{
+                    sm: "center",
+                    base: "center",
+                    md: "space-between",
+                  }}
+                  direction={{ sm: "column", base: "column", md: "row" }}
+                  gap={{ sm: "2", base: 4, md: 10 }}
+                  w={{ sm: "full", base: "100%", md: "full" }}
+                >
                   {blog.author && blog.author.email === userInfo?.email ? (
                     <IconButton
                       aria-label="Delete"
                       icon={<MdDelete />}
                       colorScheme="gray"
+                      // size="800px"
+                      w="300px"
+                      h="50px"
                       // onClick={handleDelete}
                     />
                   ) : (
                     <Text>Not an author</Text>
                   )}
-                  {/* {renderDeleteButton()} */}
-                  {/* <IconButton
-                    aria-label="Delete"
-                    icon={<MdDelete />}
-                    colorScheme="gray"
-                    //onClick={handleDelete}
-                    isDisabled={
-                      !(
-                        userInfo &&
-                        userInfo._id === blog.author &&
-                        blog.author._id
-                      )
-                    }
-                  /> */}
+
+                  {blog.author && blog.author.email === userInfo?.email ? (
+                    <IconButton
+                      aria-label="Delete"
+                      icon={<FaEdit />}
+                      colorScheme="gray"
+                      // size="800px"
+                      w="300px"
+                      h="50px"
+
+                      // onClick={handleDelete}
+                    />
+                  ) : (
+                    <Text>Not an author</Text>
+                  )}
                 </Flex>
               </Flex>
             </Flex>
