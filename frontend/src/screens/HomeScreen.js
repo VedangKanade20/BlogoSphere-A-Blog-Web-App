@@ -83,14 +83,10 @@ const HomeScreen = () => {
       </Flex>
 
       {loading ? (
-        // <p>Loading.....</p>
         <Loader />
-      ) : // <Loading />
-      error ? (
-        // <p>{error}</p>
+      ) : error ? (
         <Message type="error">{error}</Message>
       ) : (
-        // <ErrorMessage />
         <Grid
           templateColumns={{
             sm: "1fr",

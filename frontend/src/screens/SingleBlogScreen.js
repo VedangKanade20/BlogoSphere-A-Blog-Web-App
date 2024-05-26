@@ -58,9 +58,6 @@ const SingleBlogScreen = () => {
     e.preventDefault();
     dispatch(createBlogReview(id, { rating, comment, name }));
   };
-  // const renderDeleteButton = () => {
-
-  // };
 
   // const handleDelete = (e) => {
   //   e.preventDefault()
@@ -149,12 +146,6 @@ const SingleBlogScreen = () => {
                     {blog.author && blog.author.email}
                   </Link>
                 </Text>
-                {/* <IconButton
-                  aria-label="Delete"
-                  icon={<MdDelete />}
-                  colorScheme="gray"
-                  // onClick={handleDelete}
-                /> */}
 
                 {/* Conditionally render Delete Button */}
                 <Flex
@@ -172,13 +163,22 @@ const SingleBlogScreen = () => {
                       aria-label="Delete"
                       icon={<MdDelete />}
                       colorScheme="gray"
-                      // size="800px"
+                      as={RouterLink}
+                      to="/deleteBlog"
                       w="300px"
                       h="50px"
                       // onClick={handleDelete}
+                      _hover={{
+                        textDecor: "none",
+                        bgColor: "red",
+                        fontWeight: "bolder",
+                        shadow: "lg",
+                        transform: "translateY(-10px)",
+                        transition: "all 0.3s ease-in-out",
+                      }}
                     />
                   ) : (
-                    <Text>Not an author</Text>
+                    <Text>Can only be deleted by Author</Text>
                   )}
 
                   {blog.author && blog.author.email === userInfo?.email ? (
@@ -186,14 +186,23 @@ const SingleBlogScreen = () => {
                       aria-label="Delete"
                       icon={<FaEdit />}
                       colorScheme="gray"
+                      as={RouterLink}
+                      to="/editBlog"
                       // size="800px"
                       w="300px"
                       h="50px"
-
                       // onClick={handleDelete}
+                      _hover={{
+                        textDecor: "none",
+                        bgColor: "beige",
+                        fontWeight: "bolder",
+                        shadow: "lg",
+                        transform: "translateY(-10px)",
+                        transition: "all 0.3s ease-in-out",
+                      }}
                     />
                   ) : (
-                    <Text>Not an author</Text>
+                    <Text>Can only be edited by Author</Text>
                   )}
                 </Flex>
               </Flex>
