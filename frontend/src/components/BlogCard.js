@@ -141,7 +141,7 @@ const BlogCard = ({ blog }) => {
               {blog.title}
             </Heading>
           </Flex>
-          <Flex alignItems="center" justifyContent="space-between" gap="7">
+          <Flex alignItems="center" justifyContent="space-between" gap="4">
             {/* View Button */}
             <IconButton
               aria-label="View"
@@ -150,16 +150,6 @@ const BlogCard = ({ blog }) => {
               icon={<IoEyeOutline />}
             />
             <Text>{randomNumber}</Text>
-
-            {/* Conditionally render Delete Button */}
-            {userInfo && userInfo._id === blog.author && (
-              <IconButton
-                aria-label="Delete"
-                icon={<MdDelete />}
-                colorScheme="gray"
-                // onClick={handleDelete}
-              />
-            )}
           </Flex>
         </Flex>
 

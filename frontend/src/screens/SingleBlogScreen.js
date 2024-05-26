@@ -12,6 +12,7 @@ import {
   Textarea,
   IconButton,
   Divider,
+  Link,
 } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
@@ -26,7 +27,6 @@ import { BLOG_REVIEW_CREATE_RESET } from "../constants/blogConstants";
 const SingleBlogScreen = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { author } = useParams();
 
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
@@ -57,6 +57,14 @@ const SingleBlogScreen = () => {
     e.preventDefault();
     dispatch(createBlogReview(id, { rating, comment, name }));
   };
+  // const renderDeleteButton = () => {
+
+  // };
+
+  // const handleDelete = (e) => {
+  //   e.preventDefault()
+
+  // }
 
   return (
     <Flex direction="column" alignItems="center" mt="6">
@@ -121,33 +129,54 @@ const SingleBlogScreen = () => {
 
               <Divider />
               {/* Additional Information */}
-              <Flex
-                alignItems="center"
-                justifyContent="space-between"
-                direction="column"
-                gap="3"
-              >
-                <Text fontSize="20px" color="#000" fontFamily="Verdana">
-                  Credits for the blog goes to
+              <Flex justifyContent="space-between" direction="column" gap="5">
+                <Text fontSize="17px" color="#000" fontFamily="Verdana">
+                  Blog created by:
                   <u> {blog.author && blog.author.name}</u>
                 </Text>
-                <Text fontSize="20px" color="#000" fontFamily="Verdana">
-                  The True Author:(
-                  {blog.author && blog.author.email}){" "}
+                <Text fontSize="17px" color="#000" fontFamily="Verdana">
+                  Author:
+                  <Link
+                    fontSize="17px"
+                    href={`mailto:${blog.author && blog.author.email}`}
+                  >
+                    {blog.author && blog.author.email}
+                  </Link>
                 </Text>
+                {/* <IconButton
+                  aria-label="Delete"
+                  icon={<MdDelete />}
+                  colorScheme="gray"
+                  // onClick={handleDelete}
+                /> */}
 
-                {/* <Rating value={blog.ratings} color="yellow.500" size="lg" /> */}
                 {/* Conditionally render Delete Button */}
-                {userInfo &&
-                  userInfo._id === blog.author &&
-                  blog.author.name(
+                <Flex>
+                  {blog.author && blog.author.email === userInfo?.email ? (
                     <IconButton
                       aria-label="Delete"
                       icon={<MdDelete />}
                       colorScheme="gray"
                       // onClick={handleDelete}
                     />
+                  ) : (
+                    <Text>Not an author</Text>
                   )}
+                  {/* {renderDeleteButton()} */}
+                  {/* <IconButton
+                    aria-label="Delete"
+                    icon={<MdDelete />}
+                    colorScheme="gray"
+                    //onClick={handleDelete}
+                    isDisabled={
+                      !(
+                        userInfo &&
+                        userInfo._id === blog.author &&
+                        blog.author._id
+                      )
+                    }
+                  /> */}
+                </Flex>
               </Flex>
             </Flex>
           </Grid>
