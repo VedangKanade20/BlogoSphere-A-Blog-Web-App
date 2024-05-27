@@ -182,10 +182,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
-import {
-  BLOG_UPDATE_RESET,
-  BLOG_UPDATE_SUCCESS,
-} from "../constants/blogConstants";
+import { BLOG_UPDATE_RESET } from "../constants/blogConstants";
 import { listBlogDetails, updateBlog } from "../actions/blogActions";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
