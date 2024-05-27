@@ -50,33 +50,49 @@ const HomeScreen = () => {
         <Heading as="h2" mb="10" fontSize="25px" mt="4" fontFamily="Arial ">
           All Blogs
         </Heading>
+      </Flex>
 
+      <Flex justifyContent="space-between" direction="row">
         <Button
           as={RouterLink}
-          size="sm"
+          size="lg"
           to="/postBlog"
           colorScheme="teal"
           border="1px solid #fff"
-          fontFamily=" Teko"
+          fontFamily=" Arial"
           fontWeight="bold"
           p={{ base: "18px", md: "22px" }}
           onClick={handleCreatePost}
+          _hover={{
+            textDecor: "none",
+            bgColor: "green",
+            fontWeight: "bolder",
+            shadow: "lg",
+            transform: "translateY(-10px)",
+            transition: "all 0.3s ease-in-out",
+          }}
         >
           Create Post
         </Button>
-      </Flex>
 
-      <Flex>
         <Button
           as={RouterLink}
-          size="sm"
+          size="lg"
           to="/latestBlogs"
           colorScheme="teal"
           border="1px solid #fff"
-          fontFamily=" Teko"
+          fontFamily=" Arial"
           fontWeight="bold"
           p={{ base: "18px", md: "22px" }}
           onClick={handleLatesPost}
+          _hover={{
+            textDecor: "none",
+            bgColor: "green",
+            fontWeight: "bolder",
+            shadow: "lg",
+            transform: "translateY(-10px)",
+            transition: "all 0.3s ease-in-out",
+          }}
         >
           Latest Blogs
         </Button>

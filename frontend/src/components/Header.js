@@ -41,7 +41,7 @@ const Header = () => {
       wrap="wrap"
       py="6"
       px="6"
-      bgColor="teal.400"
+      bgColor="teal.700"
       w="100%"
       pos="fixed"
       top="0"
@@ -57,6 +57,7 @@ const Header = () => {
           fontSize="30px"
           letterSpacing="wide"
           fontFamily="M PLUS Rounded 1c"
+          _hover={{ textDecor: "none", color: "black" }}
         >
           Blogosphere
         </Heading>

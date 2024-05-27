@@ -6,7 +6,7 @@ const FormContainer = ({ children, width = "xl" }) => {
       direction="column"
       boxShadow="md"
       rounded="md"
-      bgColor="wheat"
+      bgColor="grey.200"
       p="10"
       width={width}
     >
