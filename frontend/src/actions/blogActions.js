@@ -112,6 +112,36 @@ export const createBlog = (blog) => async (dispatch, getState) => {
   }
 };
 
+// export const updateBlog = (blog) => async (dispatch, getState) => {
+//   try {
+//     dispatch({ type: BLOG_UPDATE_REQUEST });
+
+//     const {
+//       userLogin: { userInfo },
+//     } = getState();
+
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${userInfo.token}`,
+//         "Content-Type": "application/json",
+//       },
+//     };
+
+//     const { data } = await axios.put(`/api/blogs/${blog._id}`, blog, config);
+
+//     dispatch({ type: BLOG_UPDATE_SUCCESS, payload: data });
+//   } catch (err) {
+//     dispatch({
+//       type: BLOG_UPDATE_FAIL,
+//       payload:
+//         err.response && err.response.data.message
+//           ? err.response.data.message
+//           : err.message,
+//     });
+//   }
+// };
+
+
 export const updateBlog = (blog) => async (dispatch, getState) => {
   try {
     dispatch({ type: BLOG_UPDATE_REQUEST });
@@ -123,9 +153,11 @@ export const updateBlog = (blog) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
+
+    console.log('Updating blog with ID:', blog._id); // Log blog._id to ensure it's not undefined
 
     const { data } = await axios.put(`/api/blogs/${blog._id}`, blog, config);
 
@@ -140,3 +172,4 @@ export const updateBlog = (blog) => async (dispatch, getState) => {
     });
   }
 };
+

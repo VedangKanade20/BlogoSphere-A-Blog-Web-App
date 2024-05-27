@@ -18,7 +18,7 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link as RouterLink, useParams } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
 import { createBlogReview, listBlogDetails } from "../actions/blogActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -27,13 +27,14 @@ import { BLOG_REVIEW_CREATE_RESET } from "../constants/blogConstants";
 
 const SingleBlogScreen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
 
-  const blogDetails = useSelector((state) => state.blogDetail);
+  const blogDetails = useSelector((state) => state.blogDetails);
   const { loading, error, blog } = blogDetails;
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -111,7 +112,7 @@ const SingleBlogScreen = () => {
                 borderRadius="10px"
                 h={{ base: "300px", md: "400px" }}
                 w="full"
-                objectFit="fill"
+                objectFit="contain"
               />
 
               {/* BLOG Description */}
@@ -164,7 +165,7 @@ const SingleBlogScreen = () => {
                       icon={<MdDelete />}
                       colorScheme="gray"
                       as={RouterLink}
-                      to="/deleteBlog"
+                      to="_id/deleteBlog"
                       w="300px"
                       h="50px"
                       // onClick={handleDelete}
@@ -186,8 +187,6 @@ const SingleBlogScreen = () => {
                       aria-label="Delete"
                       icon={<FaEdit />}
                       colorScheme="gray"
-                      as={RouterLink}
-                      to="/editBlog"
                       // size="800px"
                       w="300px"
                       h="50px"
@@ -199,6 +198,10 @@ const SingleBlogScreen = () => {
                         shadow: "lg",
                         transform: "translateY(-10px)",
                         transition: "all 0.3s ease-in-out",
+                      }}
+                      onClick={() => {
+                        
+                        navigate(`/editBlog/${id}`);
                       }}
                     />
                   ) : (
@@ -220,11 +223,13 @@ const SingleBlogScreen = () => {
               Write a review
             </Heading>
 
-            {blog.reviews.length === 0 && <Message>No Reviews</Message>}
+            {blog && blog.reviews?.length === 0 && (
+              <Message>No Reviews</Message>
+            )}
 
-            {blog.reviews.length !== 0 && (
+            {blog && blog.reviews?.length !== 0 && (
               <Box p="4" bgColor="white.900" rounded="md" mb="1" mt="5">
-                {blog.reviews.map((review) => (
+                {blog?.reviews?.map((review) => (
                   <Flex direction="column" key={review._id} mb="5" w="full">
                     <Flex justifyContent="space-between">
                       <Text fontSize="lg">

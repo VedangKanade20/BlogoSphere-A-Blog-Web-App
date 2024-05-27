@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/userProfile" element={<UserProfileScreen />} />
           <Route path="/postBlog" element={<BlogPostScreen />} />
-          <Route path="/editBlog" element={<EditBlogScreen />} />
+          <Route path="/editBlog/:blogId" element={<EditBlogScreen />} />
           <Route path="/deleteBlog" element={<DeleteBlogScreen />} />
           <Route path="/trendingBlogs" element={<TrendingBlogsScreen />} />
           <Route path="/latestBlogs" element={<LatestBlogsScreen />} />

@@ -17,7 +17,7 @@ import {
 
 const reducer = combineReducers({
   blogList: blogListReducer,
-  blogDetail: blogDetailsReducer,
+  blogDetails: blogDetailsReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
