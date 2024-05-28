@@ -46,7 +46,7 @@ const BlogCard = ({ blog }) => {
           src={blog.image}
           alt={blog.title}
           w="full"
-          h="200px"
+          h="300px"
           objectFit="cover"
           borderTopLeftRadius="lg"
           borderTopRightRadius="lg"
@@ -54,18 +54,13 @@ const BlogCard = ({ blog }) => {
         <Flex py="5" px="4" direction="column" justifyContent="space-between">
           <Flex direction="row" justifyContent="space-between">
             <Flex alignItems="center" justifyContent="space-between">
-              <Heading as="h4" fontSize="lg" mb="3">
+              <Heading as="h4" fontSize="lg" mb="3" alignItems="center">
                 {blog.title}
               </Heading>
             </Flex>
-            <Flex alignItems="center" justifyContent="space-between" gap="4">
+            <Flex alignItems="center" justifyContent="space-between" gap="2">
               {/* View Button */}
-              <IconButton
-                aria-label="View"
-                as={RouterLink}
-                to="/editBlog"
-                icon={<IoEyeOutline />}
-              />
+              <IconButton aria-label="View" icon={<IoEyeOutline />} />
               <Text>{randomNumber}</Text>
             </Flex>
           </Flex>

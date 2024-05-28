@@ -109,10 +109,10 @@ const SingleBlogScreen = () => {
               <Image
                 src={blog.image}
                 alt={blog.title}
-                borderRadius="10px"
-                h={{ base: "300px", md: "400px" }}
+                borderRadius="15px"
+                h={{ base: "300px", md: "500px" }}
                 w="full"
-                objectFit="contain"
+                objectFit="cover"
               />
 
               {/* BLOG Description */}
@@ -200,7 +200,6 @@ const SingleBlogScreen = () => {
                         transition: "all 0.3s ease-in-out",
                       }}
                       onClick={() => {
-                        
                         navigate(`/editBlog/${id}`);
                       }}
                     />
