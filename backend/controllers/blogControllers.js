@@ -131,6 +131,11 @@ const deleteBlog = asyncHandler(async (req, res) => {
   const blog = await Blog.findById(req.params.id);
 
   if (blog) {
+    if (blog.author.toString() !== req.user._id.toString()) {
+      res.status(401);
+      throw new Error("You are not authorized to delete this blog");
+    } // only the author can delete the blog
+
     await blog.deleteOne();
     res.json({ message: "Blog deleted" });
   } else {

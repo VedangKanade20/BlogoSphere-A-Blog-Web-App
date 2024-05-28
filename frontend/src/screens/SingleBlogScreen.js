@@ -19,7 +19,11 @@ import { FaEdit } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
-import { createBlogReview, listBlogDetails } from "../actions/blogActions";
+import {
+  createBlogReview,
+  deleteBlog,
+  listBlogDetails,
+} from "../actions/blogActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
@@ -60,10 +64,12 @@ const SingleBlogScreen = () => {
     dispatch(createBlogReview(id, { rating, comment, name }));
   };
 
-  // const handleDelete = (e) => {
-  //   e.preventDefault()
-
-  // }
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteBlog(id));
+      navigate(`/`);
+    }
+  };
 
   return (
     <Flex direction="column" alignItems="center" mt="6">
@@ -164,11 +170,8 @@ const SingleBlogScreen = () => {
                       aria-label="Delete"
                       icon={<MdDelete />}
                       colorScheme="gray"
-                      as={RouterLink}
-                      to="_id/deleteBlog"
                       w="300px"
                       h="50px"
-                      // onClick={handleDelete}
                       _hover={{
                         textDecor: "none",
                         bgColor: "red",
@@ -177,6 +180,7 @@ const SingleBlogScreen = () => {
                         transform: "translateY(-10px)",
                         transition: "all 0.3s ease-in-out",
                       }}
+                      onClick={() => deleteHandler(blog._id)}
                     />
                   ) : (
                     <Text>Can only be deleted by Author</Text>
@@ -184,13 +188,12 @@ const SingleBlogScreen = () => {
 
                   {blog.author && blog.author.email === userInfo?.email ? (
                     <IconButton
-                      aria-label="Delete"
+                      aria-label="Edit"
                       icon={<FaEdit />}
                       colorScheme="gray"
                       // size="800px"
                       w="300px"
                       h="50px"
-                      // onClick={handleDelete}
                       _hover={{
                         textDecor: "none",
                         bgColor: "beige",

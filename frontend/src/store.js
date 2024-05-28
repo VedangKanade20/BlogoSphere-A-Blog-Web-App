@@ -3,6 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { thunk } from "redux-thunk";
 import {
   blogCreateReducer,
+  blogDeleteReducer,
   blogDetailsReducer,
   blogListReducer,
   blogReviewCreateReducer,
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   blogReviewCreate: blogReviewCreateReducer,
   blogCreate: blogCreateReducer,
   blogUpdate: blogUpdateReducer,
+  blogDelete: blogDeleteReducer,
 });
 
 // saved user info in local storage
