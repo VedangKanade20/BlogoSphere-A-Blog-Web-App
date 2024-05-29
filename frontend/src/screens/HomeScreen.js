@@ -124,9 +124,4 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-// {blogs
-//             .slice()
-//             .reverse()
-//             .map((blog) => (
-//               <BlogCard key={blog._id} blog={blog} />
-//             ))}
+
