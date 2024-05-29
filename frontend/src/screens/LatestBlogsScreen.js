@@ -42,7 +42,7 @@ const LatestBlogsScreen = () => {
           p={{ base: "10px", md: "22px" }}
           alignSelf="flex-start"
         >
-          Go Back
+          Go Back 
         </Button>
         <Heading>These are the Latest Blogs:</Heading>
       </Flex>
