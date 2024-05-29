@@ -118,7 +118,7 @@ const SingleBlogScreen = () => {
                 borderRadius="15px"
                 h={{ base: "300px", md: "500px" }}
                 w="full"
-                objectFit="cover"
+                objectFit="contain"
               />
 
               {/* BLOG Description */}
