@@ -84,6 +84,14 @@ const SingleBlogScreen = () => {
         fontWeight="bold"
         p={{ base: "10px", md: "22px" }}
         alignSelf="flex-start"
+        _hover={{
+          textDecor: "none",
+          bgColor: "green",
+          fontWeight: "bolder",
+          shadow: "lg",
+          transform: "translateY(-10px)",
+          transition: "all 0.3s ease-in-out",
+        }}
       >
         Go Back
       </Button>
@@ -221,6 +229,7 @@ const SingleBlogScreen = () => {
             borderColor="gray.300"
             w="full"
           >
+            <Divider />
             <Heading as="h3" size="lg" mb="6">
               Write a review
             </Heading>
