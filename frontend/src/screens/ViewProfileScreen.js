@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ViewProfileScreen = () => {
-  
-  return (
-    <div>ViewProfileScreen</div>
-  )
-}
+  return <div>Profile Screen for Authors/Users</div>;
+};
 
-export default ViewProfileScreen
+export default ViewProfileScreen;
