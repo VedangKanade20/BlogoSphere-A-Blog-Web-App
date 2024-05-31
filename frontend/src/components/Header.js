@@ -95,13 +95,7 @@ const Header = () => {
               <MenuItem as={RouterLink} to="/userProfile">
                 Update Profile
               </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  navigate(`/viewProfileScreen/${id}`);
-                }}
-              >
-                Your Profile
-              </MenuItem>
+
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
           </Menu>

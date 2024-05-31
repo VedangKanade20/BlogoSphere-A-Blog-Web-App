@@ -12,7 +12,6 @@ import SingleBlogScreen from "./screens/SingleBlogScreen";
 import TrendingBlogsScreen from "./screens/TrendingBlogsScreen";
 import UserProfileScreen from "./screens/UserProfileScreen";
 import DeleteBlogScreen from "./screens/DeleteBlogScreen";
-import ViewProfileScreen from "./screens/ViewProfileScreen";
 
 const App = () => {
   return (
@@ -34,10 +33,7 @@ const App = () => {
           <Route path="/userProfile" element={<UserProfileScreen />} />
           <Route path="/postBlog" element={<BlogPostScreen />} />
           <Route path="/editBlog/:blogId" element={<EditBlogScreen />} />
-          <Route
-            path="/viewProfileScreen/:userId"
-            element={<ViewProfileScreen />}
-          />
+
           <Route path="/deleteBlog" element={<DeleteBlogScreen />} />
           <Route path="/trendingBlogs" element={<TrendingBlogsScreen />} />
           <Route path="/latestBlogs" element={<LatestBlogsScreen />} />
