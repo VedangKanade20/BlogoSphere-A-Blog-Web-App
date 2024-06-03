@@ -15,14 +15,13 @@ import { FaCircleChevronDown } from "react-icons/fa6";
 import { HiOutlineMenuAlt3, HiTrendingUp } from "react-icons/hi";
 import { RiLoginCircleFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { logout } from "../actions/userActions";
 import HeaderMenuItem from "./HeaderMenuItem";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams();
 
   const [show, setShow] = useState(false);
 
