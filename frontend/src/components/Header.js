@@ -59,7 +59,7 @@ const Header = () => {
           fontFamily="M PLUS Rounded 1c"
           _hover={{ textDecor: "none", color: "black" }}
         >
-          Blogosphere
+          Crest
         </Heading>
       </Link>
 
