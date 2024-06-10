@@ -2,6 +2,7 @@ import colors from "colors";
 import dotenv from "dotenv";
 import express from "express";
 import path from "path";
+import cors from "cors";
 
 import connectDB from "./config/db.js";
 import blogRoutes from "./routes/blogRoutes.js";
@@ -15,6 +16,16 @@ connectDB(); // connection to Mongodb
 
 const app = express();
 app.use(express.json()); // Accepting the json data
+
+const corsOptions = {
+  origin: "https://localhost:3000", // Replace with your Netlify URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow cookies if needed
+  optionsSuccessStatus: 204,
+};
+
+// Enable CORS
+app.use(cors()); // Use the cors middleware
 
 app.get("/", (req, res) => {
   res.send("API is running");
