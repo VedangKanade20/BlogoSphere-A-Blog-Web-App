@@ -12,6 +12,7 @@ import SingleBlogScreen from "./screens/SingleBlogScreen";
 import TrendingBlogsScreen from "./screens/TrendingBlogsScreen";
 import UserProfileScreen from "./screens/UserProfileScreen";
 import DeleteBlogScreen from "./screens/DeleteBlogScreen";
+import LandingPage from "./screens/LandingPage";
 
 const App = () => {
   return (
@@ -26,7 +27,8 @@ const App = () => {
         bgColor="WhiteAlpha.900"
       >
         <Routes>
-          <Route path="/" element={<HomeScreen />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<HomeScreen />} />
           <Route path="/blogs/:id" element={<SingleBlogScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
