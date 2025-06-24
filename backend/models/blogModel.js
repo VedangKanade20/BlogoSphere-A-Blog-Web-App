@@ -57,6 +57,8 @@ const blogSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    summary: String,
+    views: { type: Number, default: 0 },
     reviews: [reviewSchema],
   },
   { timestamps: true }

@@ -183,6 +183,43 @@ const addBlogReview = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ * @desc    Get all blogs (Admin only)
+ * @route   GET /api/blogs/admin/list
+ * @access  private/admin
+ */
+const getBlogsList = asyncHandler(async (req, res) => {
+  if (!req.user.isAdmin) {
+    res.status(403);
+    throw new Error("Not authorized as admin");
+  }
+
+  const blogs = await Blog.find({}).populate("author", "name email");
+  res.json(blogs);
+});
+
+/**
+ * @desc    Delete a blog (Admin only, overrides author restriction)
+ * @route   DELETE /api/blogs/admin/:id
+ * @access  private/admin
+ */
+const adminDeleteBlog = asyncHandler(async (req, res) => {
+  if (!req.user.isAdmin) {
+    res.status(403);
+    throw new Error("Not authorized as admin");
+  }
+
+  const blog = await Blog.findById(req.params.id);
+
+  if (blog) {
+    await blog.deleteOne();
+    res.json({ message: "Blog deleted by admin" });
+  } else {
+    res.status(404);
+    throw new Error("Blog not found");
+  }
+});
+
 export {
   addBlogReview,
   createBlog,
@@ -190,4 +227,6 @@ export {
   getBlogById,
   getBlogs,
   updateBlog,
+  adminDeleteBlog,
+  getBlogsList
 };

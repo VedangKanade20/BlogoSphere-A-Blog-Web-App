@@ -112,4 +112,48 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile };
+/**
+ * @desc    Get all users (Admin only)
+ * @route   GET /api/users/admin/list
+ * @access  private/admin
+ */
+const getUsersList = asyncHandler(async (req, res) => {
+  if (!req.user.isAdmin) {
+    res.status(403);
+    throw new Error("Not authorized as admin");
+  }
+
+  const users = await User.find({}).select("-password"); // Exclude passwords
+  res.json(users);
+});
+
+/**
+ * @desc    Delete a user (Admin only)
+ * @route   DELETE /api/users/admin/:id
+ * @access  private/admin
+ */
+const deleteUser = asyncHandler(async (req, res) => {
+  if (!req.user.isAdmin) {
+    res.status(403);
+    throw new Error("Not authorized as admin");
+  }
+
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.deleteOne();
+    res.json({ message: "User deleted" });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+export {
+  authUser,
+  getUserProfile,
+  registerUser,
+  updateUserProfile,
+  getUsersList,
+  deleteUser,
+};
