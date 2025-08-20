@@ -33,7 +33,7 @@ const LatestBlogsScreen = () => {
       >
         <Button
           as={RouterLink}
-          to="/"
+          to="/home"
           size="sm"
           colorScheme="teal"
           border="1px solid #fff"
@@ -50,7 +50,7 @@ const LatestBlogsScreen = () => {
             transition: "all 0.3s ease-in-out",
           }}
         >
-          Go Back 
+          Go Back
         </Button>
         <Heading>These are the Latest Blogs:</Heading>
       </Flex>

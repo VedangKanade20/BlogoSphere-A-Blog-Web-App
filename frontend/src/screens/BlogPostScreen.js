@@ -51,15 +51,15 @@ const BlogPostScreen = () => {
 
     if (successCreate) {
       dispatch({ type: BLOG_CREATE_SUCCESS });
-      navigate("/");
+      navigate("/home");
     } else {
       dispatch(listBlogs());
-      console.log("bye");
     }
   }, [dispatch, navigate, userInfo, successCreate, createdBlog]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    // 👇 send the cloudinary url to backend
     dispatch(createBlog({ title, content, image }));
   };
 
@@ -76,10 +76,11 @@ const BlogPostScreen = () => {
       };
 
       const { data } = await axios.post(`/api/uploads`, formData, config);
-      setImage(data);
+
+      // 👇 store only the url string
+      setImage(data.url);
     } catch (err) {
       console.error(err);
-      console.log(err);
     }
   };
 
@@ -132,9 +133,10 @@ const BlogPostScreen = () => {
             {/* IMAGE */}
             <FormControl id="image" isRequired>
               <FormLabel>Image</FormLabel>
+              {/* shows uploaded URL for debugging */}
               <Input
                 type="text"
-                placeholder="Enter image url"
+                placeholder="Image URL"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               />

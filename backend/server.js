@@ -9,7 +9,6 @@ import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
-import aiRoutes from "./routes/aiRoutes.js";
 
 dotenv.config(); // For Env
 
@@ -36,11 +35,10 @@ app.get("/", (req, res) => {
 app.use("/api/blogs", blogRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/uploads", uploadRoutes);
-app.use("/api/aiRoutes", aiRoutes);
 
 //Create static folder
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+// const __dirname = path.resolve();
+// app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Middleware
 app.use(notFound);

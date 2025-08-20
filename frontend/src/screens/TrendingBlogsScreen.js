@@ -50,7 +50,7 @@ const TrendingBlogScreen = () => {
       >
         <Button
           as={RouterLink}
-          to="/"
+          to="/home"
           size="sm"
           colorScheme="teal"
           border="1px solid #fff"
