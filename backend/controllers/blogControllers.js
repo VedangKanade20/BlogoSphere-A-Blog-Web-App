@@ -54,7 +54,8 @@ const createBlog = asyncHandler(async (req, res) => {
       author: req.user._id,
     });
     const createdBlog = await newBlog.save();
-    res.status(201).json(createdBlog);
+    res.status(201).json({ createdBlog, message: "Blog created successfully" });
+    console.log(createdBlog);
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ message: "Server Error" });
@@ -228,5 +229,5 @@ export {
   getBlogs,
   updateBlog,
   adminDeleteBlog,
-  getBlogsList
+  getBlogsList,
 };

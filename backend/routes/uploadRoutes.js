@@ -4,14 +4,11 @@ import multer from "multer";
 import dotenv from "dotenv";
 
 dotenv.config();
-
 const router = express.Router();
 
-// Temporary file storage in memory
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Upload to Cloudinary
 router.post("/", upload.single("image"), async (req, res) => {
   try {
     const file = req.file;
@@ -19,18 +16,27 @@ router.post("/", upload.single("image"), async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    // Upload buffer directly to Cloudinary
-    const result = await cloudinary.uploader.upload_stream(
-      { folder: "blogs" },
-      (error, result) => {
-        if (error) return res.status(500).json({ message: error.message });
-        res.json(result.secure_url); // 👈 return URL to frontend
-      }
-    );
+    // Wrap cloudinary upload_stream in a Promise
+    const uploadPromise = () =>
+      new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "blogs" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        stream.end(file.buffer); // send buffer directly
+      });
 
-    // Pipe buffer
-    file.stream.pipe(result);
+    const result = await uploadPromise();
+
+    res.json({
+      url: result.secure_url, // Cloudinary URL
+      public_id: result.public_id, // In case you need delete/update later
+    });
   } catch (err) {
+    console.error("Upload error:", err);
     res.status(500).json({ message: err.message });
   }
 });
