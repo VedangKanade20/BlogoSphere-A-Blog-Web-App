@@ -53,7 +53,8 @@ const blogs = [
   },
   {
     title: "Cloud Computing Essentials",
-    image: "/images/cloudgif.gif",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkCnyOgBUuIQcLF5udfPRUVqPRWZNn6iIHYQ&s",
     content:
       "Cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet to offer faster innovation, flexible resources, and economies of scale. It allows businesses and individuals to access technology services on an as-needed basis without owning physical infrastructure. Major cloud providers like AWS, Azure, and Google Cloud offer a range of services, including Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS).",
     ratings: 4.2,
@@ -61,7 +62,8 @@ const blogs = [
   },
   {
     title: "Blockchain Technology",
-    image: "/images/blockchaingif.gif",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkCnyOgBUuIQcLF5udfPRUVqPRWZNn6iIHYQ&s",
     content:
       "Blockchain technology is a decentralized and distributed ledger system that records transactions across multiple computers in a secure, transparent, and tamper-resistant manner. Each block in the chain contains a list of transactions, and once a block is added, it cannot be altered without changing all subsequent blocks. Blockchain is the backbone of cryptocurrencies like Bitcoin and Ethereum but is also used in supply chain management, smart contracts, and digital identity verification.",
     ratings: 3.9,
@@ -69,7 +71,8 @@ const blogs = [
   },
   {
     title: "Data Science Fundamentals",
-    image: "/images/datasciencegif.gif",
+    image:
+      "https://www.mygreatlearning.com/blog/wp-content/uploads/2019/09/What-is-data-science-2.jpg",
     content:
       "Data science is an interdisciplinary field that combines statistics, computer science, and domain expertise to extract insights from structured and unstructured data. It involves processes like data collection, cleaning, analysis, visualization, and modeling to uncover patterns and support decision-making. Tools like Python, R, SQL, and frameworks like TensorFlow or Pandas are commonly used by data scientists to analyze large datasets and build predictive models.",
     ratings: 4.7,
@@ -77,7 +80,8 @@ const blogs = [
   },
   {
     title: "Internet of Things (IoT)",
-    image: "/images/iotgif.gif",
+    image:
+      "https://www.mygreatlearning.com/blog/wp-content/uploads/2019/09/What-is-data-science-2.jpg",
     content:
       "The Internet of Things (IoT) refers to the network of interconnected devices that communicate and exchange data over the internet. These devices, ranging from smart home appliances to industrial sensors, collect and share data to enable automation, monitoring, and optimization. IoT applications span smart cities, healthcare, agriculture, and manufacturing, leveraging technologies like sensors, cloud computing, and machine learning to drive efficiency and innovation.",
     ratings: 4.0,
@@ -85,7 +89,8 @@ const blogs = [
   },
   {
     title: "Augmented Reality (AR) Development",
-    image: "/images/argif.gif",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpX8quwtpUBW83lr6veh2jHOkVpoAQuLYRXA&s",
     content:
       "Augmented Reality (AR) is a technology that overlays digital information, such as images, videos, or 3D models, onto the real world, enhancing the user’s perception of reality. AR development involves creating applications for devices like smartphones, tablets, or AR glasses using frameworks like ARKit, ARCore, or Unity. It is widely used in gaming, education, retail, and healthcare to create immersive and interactive experiences.",
     ratings: 4.3,
@@ -93,7 +98,8 @@ const blogs = [
   },
   {
     title: "Quantum Computing Basics",
-    image: "/images/quantumgif.gif",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4OzAWEUBsji4-Apxx4G_W5-Thznr2WxyBA&s",
     content:
       "Quantum computing is an advanced area of computing that uses principles of quantum mechanics, such as superposition, entanglement, and quantum interference, to process information. Unlike classical computers that use bits (0s and 1s), quantum computers use qubits, which can represent both 0 and 1 simultaneously. This enables quantum computers to solve complex problems, like cryptography and optimization, much faster than classical computers in certain scenarios.",
     ratings: 4.8,
